@@ -1,0 +1,331 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Noto Sans SC";
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Noto Sans SC",serif;}
+.MsoChpDefault
+	{font-family:"Noto Sans SC",serif;}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+@page WordSection1
+	{size:595.35pt 841.95pt;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link="#0563C1" vlink="#954F72" style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
+12.0pt;margin-left:6.0pt'><span style='color:black'>const { useState, useEffect
+} = React;</span><br>
+<br>
+<span style='color:black'>const TRANSLATIONS = {</span><br>
+<span style='color:black'>  ar: { lang: &quot;العربية&quot;, title: &quot;حساب المعدلات&quot;,
+grade2: &quot;السنة الثانية&quot;, grade3: &quot;السنة الثالثة&quot;, gradeT:
+&quot;السنة النهائية&quot;, science: &quot;العلوم&quot;, math: &quot;الرياضيات&quot;,
+tech: &quot;العلوم التقنية&quot;, literature: &quot;الأدب والفلسفة&quot;,
+foreign: &quot;اللغات الأجنبية&quot;, semesterAvg: &quot;معدل الفصل&quot;,
+generalAvg: &quot;المعدل العام&quot;, reset: &quot;إعادة تعيين&quot;,
+excellent: &quot;ممتاز&quot;, good: &quot;جيد جداً&quot;, pass: &quot;مقبول&quot;,
+fail: &quot;راسب&quot;, inputScore: &quot;أدخل الدرجة&quot;, subjects: &quot;المواد&quot;
+},</span><br>
+<span style='color:black'>  en: { lang: &quot;English&quot;, title: &quot;Grade
+Calculator&quot;, grade2: &quot;2nd Year&quot;, grade3: &quot;3rd Year&quot;,
+gradeT: &quot;Graduation Year&quot;, science: &quot;Sciences&quot;, math:
+&quot;Mathematics&quot;, tech: &quot;Technical Sciences&quot;, literature:
+&quot;Literature &amp; Philosophy&quot;, foreign: &quot;Foreign Languages&quot;,
+semesterAvg: &quot;Semester Average&quot;, generalAvg: &quot;General
+Average&quot;, reset: &quot;Reset&quot;, excellent: &quot;Excellent&quot;,
+good: &quot;Very Good&quot;, pass: &quot;Pass&quot;, fail: &quot;Fail&quot;,
+inputScore: &quot;Enter Score&quot;, subjects: &quot;Subjects&quot; },</span><br>
+<span style='color:black'>  fr: { lang: &quot;Français&quot;, title:
+&quot;Calculateur de Notes&quot;, grade2: &quot;2ème Année&quot;, grade3:
+&quot;1ère Année&quot;, gradeT: &quot;Année Terminale&quot;, science:
+&quot;Sciences&quot;, math: &quot;Mathématiques&quot;, tech: &quot;Sciences
+Techniques&quot;, literature: &quot;Lettres &amp; Philosophie&quot;, foreign:
+&quot;Langues Étrangères&quot;, semesterAvg: &quot;Moyenne Semestre&quot;,
+generalAvg: &quot;Moyenne Générale&quot;, reset: &quot;Réinitialiser&quot;,
+excellent: &quot;Excellent&quot;, good: &quot;Très Bien&quot;, pass:
+&quot;Passable&quot;, fail: &quot;Insuffisant&quot;, inputScore: &quot;Entrez
+la note&quot;, subjects: &quot;Matières&quot; },</span><br>
+<span style='color:black'>  zh: { lang: &quot;中文&quot;, title: &quot;成绩计算器&quot;,
+grade2: &quot;二年级&quot;, grade3: &quot;三年级&quot;, gradeT: &quot;毕业班&quot;,
+science: &quot;理科&quot;, math: &quot;数学&quot;, tech: &quot;技术科学&quot;,
+literature: &quot;文学与哲学&quot;, foreign: &quot;外语&quot;, semesterAvg: &quot;学期平均分&quot;,
+generalAvg: &quot;总平均分&quot;, reset: &quot;重置&quot;, excellent: &quot;优秀&quot;,
+good: &quot;良好&quot;, pass: &quot;及格&quot;, fail: &quot;不及格&quot;, inputScore:
+&quot;输入分数&quot;, subjects: &quot;科目&quot; }</span><br>
+<span style='color:black'>};</span><br>
+<br>
+<span style='color:black'>const SUBJECTS = {</span><br>
+<span style='color:black'>  sciences: [&quot;الرياضيات/Mathématiques&quot;,
+&quot;الفيزياء/Physique&quot;, &quot;العلوم الطبيعية/SVT&quot;, &quot;الكيمياء/Chimie&quot;,
+&quot;العربية/Arabe&quot;, &quot;الفرنسية/Français&quot;, &quot;الإنجليزية/Anglais&quot;],</span><br>
+<span style='color:black'>  mathematiques: [&quot;الرياضيات/Mathématiques&quot;,
+&quot;الفيزياء/Physique&quot;, &quot;العلوم الطبيعية/SVT&quot;, &quot;العربية/Arabe&quot;,
+&quot;الفرنسية/Français&quot;, &quot;الإنجليزية/Anglais&quot;, &quot;التاريخ والجغرافيا/Histoire-Géo&quot;],</span><br>
+<span style='color:black'>  tech: [&quot;الرياضيات/Mathématiques&quot;, &quot;الفيزياء/Physique&quot;,
+&quot;العلوم الصناعية/Sciences Industrielles&quot;, &quot;العربية/Arabe&quot;,
+&quot;الفرنسية/Français&quot;, &quot;الإنجليزية/Anglais&quot;],</span><br>
+<span style='color:black'>  literature: [&quot;العربية/Arabe&quot;, &quot;الفرنسية/Français&quot;,
+&quot;الإنجليزية/Anglais&quot;, &quot;التاريخ والجغرافيا/Histoire-Géo&quot;,
+&quot;الفلسفة/Philosophie&quot;, &quot;التربية الإسلامية/Education
+Islamique&quot;],</span><br>
+<span style='color:black'>  foreign: [&quot;العربية/Arabe&quot;, &quot;الفرنسية/Français&quot;,
+&quot;الإنجليزية/Anglais&quot;, &quot;اللغة الثانية/2ème Langue&quot;, &quot;التاريخ
+والجغرافيا/Histoire-Géo&quot;, &quot;التربية الإسلامية/Education
+Islamique&quot;]</span><br>
+<span style='color:black'>};</span><br>
+<br>
+<span style='color:black'>const GRADES = [</span><br>
+<span style='color:black'>  { min: 16, label: &quot;excellent&quot;, color:
+&quot;text-green-600&quot; },</span><br>
+<span style='color:black'>  { min: 14, label: &quot;good&quot;, color:
+&quot;text-blue-600&quot; },</span><br>
+<span style='color:black'>  { min: 10, label: &quot;pass&quot;, color:
+&quot;text-yellow-600&quot; },</span><br>
+<span style='color:black'>  { min: 0, label: &quot;fail&quot;, color:
+&quot;text-red-600&quot; }</span><br>
+<span style='color:black'>];</span><br>
+<br>
+<span style='color:black'>export default function App() {</span><br>
+<span style='color:black'>  const [lang, setLang] = useState(&quot;fr&quot;);</span><br>
+<span style='color:black'>  const [grade, setGrade] =
+useState(&quot;1ère&quot;);</span><br>
+<span style='color:black'>  const [specialty, setSpecialty] =
+useState(&quot;sciences&quot;);</span><br>
+<span style='color:black'>  const [scores, setScores] = useState({});</span><br>
+<span style='color:black'>  const t = TRANSLATIONS[lang];</span><br>
+<br>
+<span style='color:black'>  useEffect(() =&gt; {</span><br>
+<span style='color:black'>    const newScores = {};</span><br>
+<span style='color:black'>    SUBJECTS[specialty].forEach(s =&gt; {
+newScores[s] = &quot;&quot;; });</span><br>
+<span style='color:black'>    setScores(newScores);</span><br>
+<span style='color:black'>  }, [specialty]);</span><br>
+<br>
+<span style='color:black'>  const handleScoreChange = (subject, value) =&gt; {</span><br>
+<span style='color:black'>    setScores(prev =&gt; ({ ...prev, [subject]: value
+}));</span><br>
+<span style='color:black'>  };</span><br>
+<br>
+<span style='color:black'>  const calcAverage = (scoreList) =&gt; {</span><br>
+<span style='color:black'>    const valid = scoreList.filter(s =&gt; s !==
+&quot;&quot; &amp;&amp; !isNaN(Number(s)));</span><br>
+<span style='color:black'>    if (valid.length === 0) return 0;</span><br>
+<span style='color:black'>    return valid.reduce((a, b) =&gt; a + Number(b),
+0) / valid.length;</span><br>
+<span style='color:black'>  };</span><br>
+<br>
+<span style='color:black'>  const semesterAvg =
+calcAverage(Object.values(scores));</span><br>
+<span style='color:black'>  const generalAvg = semesterAvg;</span><br>
+<br>
+<span style='color:black'>  const getGradeLabel = (avg) =&gt; {</span><br>
+<span style='color:black'>    for (const g of GRADES) {</span><br>
+<span style='color:black'>      if (avg &gt;= g.min) return { label:
+t[g.label], color: g.color };</span><br>
+<span style='color:black'>    }</span><br>
+<span style='color:black'>    return { label: t.fail, color:
+&quot;text-red-600&quot; };</span><br>
+<span style='color:black'>  };</span><br>
+<br>
+<span style='color:black'>  const reset = () =&gt; {</span><br>
+<span style='color:black'>    const newScores = {};</span><br>
+<span style='color:black'>    SUBJECTS[specialty].forEach(s =&gt; {
+newScores[s] = &quot;&quot;; });</span><br>
+<span style='color:black'>    setScores(newScores);</span><br>
+<span style='color:black'>  };</span><br>
+<br>
+<span style='color:black'>  return (</span><br>
+<span style='color:black'>    &lt;div className=&quot;min-h-screen bg-gradient-to-br
+from-green-50 via-white to-red-50 p-4&quot;&gt;</span><br>
+<span style='color:black'>      {/* Header */}</span><br>
+<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto
+mb-6&quot;&gt;</span><br>
+<span style='color:black'>        &lt;div className=&quot;bg-gradient-to-r
+from-green-700 via-white to-red-600 rounded-2xl p-6 shadow-2xl&quot;&gt;</span><br>
+<span style='color:black'>          &lt;div className=&quot;flex justify-between
+items-center mb-4&quot;&gt;</span><br>
+<span style='color:black'>            &lt;h1 className=&quot;text-3xl font-bold
+text-white&quot;&gt;{t.title} &#127891;&lt;/h1&gt;</span><br>
+<span style='color:black'>            &lt;div className=&quot;flex
+gap-2&quot;&gt;</span><br>
+<span style='color:black'>              {Object.keys(TRANSLATIONS).map(l =&gt;
+(</span><br>
+<span style='color:black'>                &lt;button key={l} onClick={() =&gt;
+setLang(l)}</span><br>
+<span style='color:black'>                  className={`px-3 py-1 rounded-full
+text-sm font-semibold transition-all ${lang === l ? &quot;bg-white
+text-green-700&quot; : &quot;bg-white/30 text-white
+hover:bg-white/50&quot;}`}&gt;</span><br>
+<span style='color:black'>                  {TRANSLATIONS[l].lang}</span><br>
+<span style='color:black'>                &lt;/button&gt;</span><br>
+<span style='color:black'>              ))}</span><br>
+<span style='color:black'>            &lt;/div&gt;</span><br>
+<span style='color:black'>          &lt;/div&gt;</span><br>
+<span style='color:black'>          &lt;div className=&quot;flex flex-wrap
+gap-3 text-white&quot;&gt;</span><br>
+<span style='color:black'>            &lt;div
+className=&quot;text-2xl&quot;&gt;∑ Δ π √ ∞&lt;/div&gt;</span><br>
+<span style='color:black'>          &lt;/div&gt;</span><br>
+<span style='color:black'>        &lt;/div&gt;</span><br>
+<span style='color:black'>      &lt;/div&gt;</span><br>
+<br>
+<span style='color:black'>      {/* Controls */}</span><br>
+<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto mb-6
+grid grid-cols-1 md:grid-cols-3 gap-4&quot;&gt;</span><br>
+<span style='color:black'>        &lt;div className=&quot;bg-white rounded-xl
+p-4 shadow-lg border-l-4 border-green-600&quot;&gt;</span><br>
+<span style='color:black'>          &lt;label className=&quot;block text-sm
+font-semibold text-gray-700 mb-2&quot;&gt;{t.grade2} / {t.grade3} / {t.gradeT}&lt;/label&gt;</span><br>
+<span style='color:black'>          &lt;select value={grade} onChange={e =&gt;
+setGrade(e.target.value)}</span><br>
+<span style='color:black'>            className=&quot;w-full p-2 border-2
+border-green-200 rounded-lg focus:border-green-500 outline-none&quot;&gt;</span><br>
+<span style='color:black'>            &lt;option
+value=&quot;2ème&quot;&gt;{t.grade2}&lt;/option&gt;</span><br>
+<span style='color:black'>            &lt;option
+value=&quot;1ère&quot;&gt;{t.grade3}&lt;/option&gt;</span><br>
+<span style='color:black'>            &lt;option
+value=&quot;Terminale&quot;&gt;{t.gradeT}&lt;/option&gt;</span><br>
+<span style='color:black'>          &lt;/select&gt;</span><br>
+<span style='color:black'>        &lt;/div&gt;</span><br>
+<span style='color:black'>        &lt;div className=&quot;bg-white rounded-xl
+p-4 shadow-lg border-l-4 border-red-500&quot;&gt;</span><br>
+<span style='color:black'>          &lt;label className=&quot;block text-sm
+font-semibold text-gray-700 mb-2&quot;&gt;{t.subjects}&lt;/label&gt;</span><br>
+<span style='color:black'>          &lt;select value={specialty} onChange={e
+=&gt; setSpecialty(e.target.value)}</span><br>
+<span style='color:black'>            className=&quot;w-full p-2 border-2
+border-red-200 rounded-lg focus:border-red-500 outline-none&quot;&gt;</span><br>
+<span style='color:black'>            &lt;option
+value=&quot;sciences&quot;&gt;{t.science}&lt;/option&gt;</span><br>
+<span style='color:black'>            &lt;option
+value=&quot;mathematiques&quot;&gt;{t.math}&lt;/option&gt;</span><br>
+<span style='color:black'>            &lt;option
+value=&quot;tech&quot;&gt;{t.tech}&lt;/option&gt;</span><br>
+<span style='color:black'>            &lt;option
+value=&quot;literature&quot;&gt;{t.literature}&lt;/option&gt;</span><br>
+<span style='color:black'>            &lt;option
+value=&quot;foreign&quot;&gt;{t.foreign}&lt;/option&gt;</span><br>
+<span style='color:black'>          &lt;/select&gt;</span><br>
+<span style='color:black'>        &lt;/div&gt;</span><br>
+<span style='color:black'>        &lt;div className=&quot;bg-white rounded-xl
+p-4 shadow-lg border-l-4 border-green-600 flex items-center&quot;&gt;</span><br>
+<span style='color:black'>          &lt;button onClick={reset}</span><br>
+<span style='color:black'>            className=&quot;w-full bg-gradient-to-r
+from-green-600 to-red-500 text-white py-2 rounded-lg font-semibold
+hover:opacity-90 transition-opacity&quot;&gt;</span><br>
+<span style='color:black'>            &#128260; {t.reset}</span><br>
+<span style='color:black'>          &lt;/button&gt;</span><br>
+<span style='color:black'>        &lt;/div&gt;</span><br>
+<span style='color:black'>      &lt;/div&gt;</span><br>
+<br>
+<span style='color:black'>      {/* Scores */}</span><br>
+<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto
+mb-6&quot;&gt;</span><br>
+<span style='color:black'>        &lt;div className=&quot;bg-white rounded-2xl
+p-6 shadow-xl&quot;&gt;</span><br>
+<span style='color:black'>          &lt;h2 className=&quot;text-xl font-bold
+text-gray-800 mb-4&quot;&gt;&#128221; {t.inputScore} (0-20)&lt;/h2&gt;</span><br>
+<span style='color:black'>          &lt;div className=&quot;grid grid-cols-1
+sm:grid-cols-2 lg:grid-cols-3 gap-4&quot;&gt;</span><br>
+<span style='color:black'>            {SUBJECTS[specialty].map(subject =&gt; (</span><br>
+<span style='color:black'>              &lt;div key={subject}
+className=&quot;bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-xl
+border border-gray-200 hover:shadow-md transition-shadow&quot;&gt;</span><br>
+<span style='color:black'>                &lt;label className=&quot;block
+text-sm font-semibold text-gray-700 mb-2&quot;&gt;{subject}&lt;/label&gt;</span><br>
+<span style='color:black'>                &lt;input type=&quot;number&quot;
+min=&quot;0&quot; max=&quot;20&quot; step=&quot;0.5&quot;</span><br>
+<span style='color:black'>                  value={scores[subject] ||
+&quot;&quot;}</span><br>
+<span style='color:black'>                  onChange={e =&gt;
+handleScoreChange(subject, e.target.value)}</span><br>
+<span style='color:black'>                  className=&quot;w-full p-2 border-2
+border-gray-300 rounded-lg focus:border-green-500 outline-none text-center
+text-lg font-semibold&quot;</span><br>
+<span style='color:black'>                  placeholder=&quot;0-20&quot; /&gt;</span><br>
+<span style='color:black'>              &lt;/div&gt;</span><br>
+<span style='color:black'>            ))}</span><br>
+<span style='color:black'>          &lt;/div&gt;</span><br>
+<span style='color:black'>        &lt;/div&gt;</span><br>
+<span style='color:black'>      &lt;/div&gt;</span><br>
+<br>
+<span style='color:black'>      {/* Results */}</span><br>
+<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto mb-6
+grid grid-cols-1 md:grid-cols-2 gap-4&quot;&gt;</span><br>
+<span style='color:black'>        &lt;div className=&quot;bg-gradient-to-br
+from-green-600 to-green-800 text-white rounded-2xl p-6 shadow-xl&quot;&gt;</span><br>
+<span style='color:black'>          &lt;div className=&quot;text-4xl
+mb-2&quot;&gt;&#128202;&lt;/div&gt;</span><br>
+<span style='color:black'>          &lt;h3 className=&quot;text-xl font-bold
+mb-2&quot;&gt;{t.semesterAvg}&lt;/h3&gt;</span><br>
+<span style='color:black'>          &lt;div className=&quot;text-5xl font-bold
+mb-2&quot;&gt;{semesterAvg.toFixed(2)}&lt;/div&gt;</span><br>
+<span style='color:black'>          &lt;div className={`text-lg font-semibold
+${getGradeLabel(semesterAvg).color}`}&gt;</span><br>
+<span style='color:black'>            {getGradeLabel(semesterAvg).label}</span><br>
+<span style='color:black'>          &lt;/div&gt;</span><br>
+<span style='color:black'>        &lt;/div&gt;</span><br>
+<span style='color:black'>        &lt;div className=&quot;bg-gradient-to-br
+from-red-500 to-red-700 text-white rounded-2xl p-6 shadow-xl&quot;&gt;</span><br>
+<span style='color:black'>          &lt;div className=&quot;text-4xl
+mb-2&quot;&gt;&#127942;&lt;/div&gt;</span><br>
+<span style='color:black'>          &lt;h3 className=&quot;text-xl font-bold
+mb-2&quot;&gt;{t.generalAvg}&lt;/h3&gt;</span><br>
+<span style='color:black'>          &lt;div className=&quot;text-5xl font-bold
+mb-2&quot;&gt;{generalAvg.toFixed(2)}&lt;/div&gt;</span><br>
+<span style='color:black'>          &lt;div className={`text-lg font-semibold
+${getGradeLabel(generalAvg).color}`}&gt;</span><br>
+<span style='color:black'>            {getGradeLabel(generalAvg).label}</span><br>
+<span style='color:black'>          &lt;/div&gt;</span><br>
+<span style='color:black'>        &lt;/div&gt;</span><br>
+<span style='color:black'>      &lt;/div&gt;</span><br>
+<br>
+<span style='color:black'>      {/* Footer */}</span><br>
+<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto
+text-center text-gray-500 text-sm pb-4&quot;&gt;</span><br>
+<span style='color:black'>        Algérie &#127465;&#127487; • {new
+Date().getFullYear()}</span><br>
+<span style='color:black'>      &lt;/div&gt;</span><br>
+<span style='color:black'>    &lt;/div&gt;</span><br>
+<span style='color:black'>  );</span><br>
+<span style='color:black'>}</span><br>
+<br>
+</p>
+
+<p class=MsoNormal style='margin-top:13.45pt;margin-right:0in;margin-bottom:
+13.45pt;margin-left:6.0pt'><span style='color:black'>【以上内容由文心人工智能生成】</span></p>
+
+</div>
+
+</body>
+
+</html>
