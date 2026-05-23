@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧮 حاسبة المعدلات الفصلية - الطور الثانوي الجزائري | الأستاذ خليل زهير</title>
+    <title>🧮 حاسبة المعدلات - الطور الثانوي الجزائري | الأستاذ خليل زهير</title>
     <style>
         :root {
             --green: #006233;
@@ -12,58 +12,46 @@
             --gold: #C9A84C;
             --gold-light: #E8D48B;
             --dark: #0d1b11;
-            --darker: #080f0b;
             --card-bg: #ffffff;
             --text: #1a1a2e;
-            --text-light: #555;
-            --surface: #f8f9fa;
             --border: #e0e0e0;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-            --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.12);
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.15);
             --radius: 20px;
-            --radius-sm: 14px;
-            --radius-xs: 10px;
+            --radius-sm: 12px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --font-heading: 'Segoe UI', 'Tajawal', 'Noto Sans Arabic', sans-serif;
             --font-body: 'Segoe UI', 'Tajawal', 'Noto Sans Arabic', sans-serif;
             --font-mono: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: var(--font-body);
             background: #f0f2f0;
-            background-image:
-                radial-gradient(ellipse at 15% 20%, rgba(0, 98, 51, 0.06) 0%, transparent 55%),
+            background-image: radial-gradient(ellipse at 15% 20%, rgba(0, 98, 51, 0.06) 0%, transparent 55%),
                 radial-gradient(ellipse at 85% 75%, rgba(210, 16, 52, 0.04) 0%, transparent 55%),
                 radial-gradient(ellipse at 50% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
             background-attachment: fixed;
             min-height: 100vh;
             color: var(--text);
             line-height: 1.6;
-            transition: all var(--transition);
             padding: 10px;
         }
-
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.022;
-            background:
-                repeating-conic-gradient(#006233 0% 3%, transparent 3% 12%) 0 0 / 60px 60px,
+            opacity: 0.025;
+            background: repeating-conic-gradient(#006233 0% 3%, transparent 3% 12%) 0 0 / 60px 60px,
                 repeating-conic-gradient(#006233 0% 3%, transparent 3% 12%) 30px 30px / 60px 60px;
             mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
         }
-
         .app-container {
             max-width: 1150px;
             margin: 0 auto;
@@ -71,37 +59,26 @@
             z-index: 1;
         }
 
-        /* ── Header ── */
+        /* Header */
         .header {
             background: linear-gradient(135deg, #006233 0%, #004d28 30%, #00381d 60%, #006233 100%);
             border-radius: var(--radius);
-            padding: 22px 28px 18px;
-            margin-bottom: 18px;
+            padding: 20px 28px;
+            margin-bottom: 12px;
             box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
-            border: 2px solid rgba(201, 168, 76, 0.45);
+            border: 2px solid rgba(201, 168, 76, 0.4);
         }
         .header::after {
             content: '';
             position: absolute;
-            top: -55px;
-            right: -35px;
-            width: 180px;
-            height: 180px;
+            top: -60px;
+            right: -40px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.07);
-            pointer-events: none;
-        }
-        .header::before {
-            content: '';
-            position: absolute;
-            bottom: -25px;
-            left: -25px;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.04);
+            border: 3px solid rgba(255, 255, 255, 0.08);
             pointer-events: none;
         }
         .header-inner {
@@ -116,11 +93,11 @@
         .header-title-group {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
         }
         .logo-icon {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
             animation: float 3s ease-in-out infinite;
         }
@@ -130,7 +107,7 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-7px);
+                transform: translateY(-8px);
             }
         }
         .header h1 {
@@ -138,33 +115,24 @@
             font-size: 1.6rem;
             font-weight: 800;
             color: #fff;
-            letter-spacing: -0.02em;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             line-height: 1.3;
         }
         .header .subtitle {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.82);
-            font-weight: 400;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
             display: block;
         }
         .dev-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(255, 255, 255, 0.13);
-            backdrop-filter: blur(6px);
-            border-radius: 30px;
-            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 25px;
+            padding: 7px 16px;
             font-size: 0.78rem;
             color: #fff;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.28);
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             white-space: nowrap;
-            margin-top: 4px;
-        }
-        .dev-badge .dev-icon {
-            font-size: 1.1rem;
+            backdrop-filter: blur(4px);
         }
         .lang-switcher {
             display: flex;
@@ -173,24 +141,22 @@
             z-index: 1;
         }
         .lang-btn {
-            padding: 9px 14px;
+            padding: 9px 15px;
             border-radius: 25px;
             border: 2px solid rgba(255, 255, 255, 0.35);
-            background: rgba(255, 255, 255, 0.09);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
             cursor: pointer;
-            font-size: 0.84rem;
+            font-size: 0.85rem;
             font-weight: 600;
             transition: all var(--transition);
             backdrop-filter: blur(4px);
             white-space: nowrap;
-            letter-spacing: 0.02em;
         }
         .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.24);
+            background: rgba(255, 255, 255, 0.25);
             border-color: rgba(255, 255, 255, 0.7);
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
         }
         .lang-btn.active {
             background: #fff;
@@ -200,48 +166,92 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
         }
 
-        /* ── Stream Selector ── */
-        .selector-card {
+        /* Ticker */
+        .ticker-wrap {
+            background: linear-gradient(90deg, #006233, #004d28, #006233);
+            border-radius: 30px;
+            padding: 10px 0;
+            margin-bottom: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+        .ticker {
+            display: flex;
+            animation: scrollTicker 35s linear infinite;
+            white-space: nowrap;
+            gap: 50px;
+        }
+        @keyframes scrollTicker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        .ticker span {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            padding: 0 30px;
+        }
+
+        /* Cards */
+        .card {
             background: var(--card-bg);
             border-radius: var(--radius);
-            padding: 16px 22px;
+            padding: 18px 20px;
             margin-bottom: 14px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
         }
-        .selector-card label {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text);
-            display: block;
-            margin-bottom: 9px;
+        .card h3 {
             font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #006233;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .stream-select {
+        .form-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 160px;
+        }
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 4px;
+            color: #444;
+        }
+        .form-group input,
+        .form-group select {
             width: 100%;
-            padding: 13px 18px;
-            border-radius: var(--radius-sm);
+            padding: 11px 14px;
+            border-radius: 10px;
             border: 2px solid #dde;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-family: var(--font-body);
             background: #fafbfc;
-            cursor: pointer;
             transition: all var(--transition);
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23006233' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: left 16px center;
-            color: var(--text);
         }
-        .stream-select:focus {
+        .form-group input:focus,
+        .form-group select:focus {
             outline: none;
             border-color: #006233;
-            box-shadow: 0 0 0 4px rgba(0, 98, 51, 0.1);
-            background: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 98, 51, 0.08);
         }
 
-        /* ── Semester Tabs ── */
         .semester-tabs {
             display: flex;
             gap: 8px;
@@ -250,241 +260,125 @@
         }
         .semester-tab {
             flex: 1;
-            min-width: 100px;
-            padding: 13px 18px;
-            border-radius: var(--radius-sm);
+            min-width: 90px;
+            padding: 13px 16px;
+            border-radius: 25px;
             border: 2px solid #dde;
             background: #fff;
             cursor: pointer;
             font-weight: 700;
-            font-size: 0.93rem;
+            font-size: 0.9rem;
             transition: all var(--transition);
             text-align: center;
-            font-family: var(--font-heading);
             color: #555;
         }
         .semester-tab:hover {
             border-color: #006233;
             color: #006233;
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
         }
         .semester-tab.active {
             background: #006233;
             color: #fff;
             border-color: #006233;
-            box-shadow: 0 8px 22px rgba(0, 98, 51, 0.3);
         }
         .semester-tab .tab-avg {
             display: block;
-            font-size: 0.73rem;
+            font-size: 0.7rem;
             font-weight: 400;
             opacity: 0.85;
-            margin-top: 3px;
         }
 
-        /* ── Info Bar (weighting) ── */
-        .info-bar {
-            background: #fffef7;
-            border: 1px solid #e8d48b;
-            border-radius: var(--radius-sm);
-            padding: 11px 18px;
-            margin-bottom: 14px;
-            font-size: 0.84rem;
-            color: #6b5a1a;
-            text-align: center;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .info-bar .formula-badge {
-            background: #006233;
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        /* ── Subjects Card ── */
-        .subjects-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 18px 20px;
-            margin-bottom: 14px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-        .subjects-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            color: #006233;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 12px;
-        }
-        .subject-card {
-            background: #fafbfc;
-            border-radius: var(--radius-sm);
-            padding: 14px 16px;
-            border: 1px solid #eef;
-            transition: all var(--transition);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .subject-card:hover {
-            border-color: #c8d8d0;
-            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
-            background: #fff;
-        }
-        .subject-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        .subject-name {
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--text);
-            flex: 1;
-            min-width: 0;
-        }
-        .subject-coef-badge {
-            background: #006233;
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.73rem;
-            font-weight: 700;
-            white-space: nowrap;
-            font-family: var(--font-mono);
-        }
-        .subject-inputs {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .input-group {
-            flex: 1;
-            min-width: 80px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .input-group label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #777;
-            white-space: nowrap;
-        }
-        .input-group input {
+        .subjects-table {
             width: 100%;
-            padding: 9px 8px;
-            border-radius: 8px;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .subjects-table th {
+            background: #e8f0eb;
+            color: #006233;
+            padding: 10px 6px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 0.78rem;
+            border-radius: 6px 6px 0 0;
+        }
+        .subjects-table td {
+            padding: 8px 5px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+        .subjects-table .subj-name {
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+        .subjects-table .coef-badge {
+            background: #fff3e0;
+            color: #c79100;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            display: inline-block;
+        }
+        .subjects-table input {
+            width: 55px;
+            padding: 7px 5px;
+            border-radius: 7px;
             border: 2px solid #e0e5e2;
-            font-size: 0.9rem;
             text-align: center;
             font-weight: 600;
+            font-size: 0.85rem;
             transition: all var(--transition);
-            background: #fff;
             font-family: var(--font-mono);
-            color: var(--text);
         }
-        .input-group input:focus {
+        .subjects-table input:focus {
             outline: none;
             border-color: #006233;
-            box-shadow: 0 0 0 4px rgba(0, 98, 51, 0.07);
+            box-shadow: 0 0 0 3px rgba(0, 98, 51, 0.08);
         }
-        .input-group input.filled {
-            border-color: #4CAF50;
-            background: #f1faf2;
-        }
-        .subject-result-mini {
-            font-size: 0.78rem;
+        .subjects-table .avg-cell {
             font-weight: 700;
-            text-align: center;
             color: #006233;
-            background: #e8f5e9;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-family: var(--font-mono);
-        }
-        .subject-result-mini.neutral {
-            color: #888;
-            background: #f5f5f5;
-        }
-        .subject-result-mini.warning {
-            color: #c79100;
-            background: #fff8e1;
-        }
-        .subject-result-mini.fail {
-            color: #b71c1c;
-            background: #ffebee;
+            font-size: 0.9rem;
+            background: #f5faf7;
+            border-radius: 6px;
+            padding: 4px 8px;
         }
 
-        /* ── Results Panel ── */
         .results-panel {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 12px;
             margin-bottom: 14px;
         }
         .result-card {
-            background: var(--card-bg);
+            background: #fff;
             border-radius: var(--radius);
-            padding: 16px 18px;
+            padding: 16px;
             box-shadow: var(--shadow);
             text-align: center;
             border: 2px solid transparent;
             transition: all var(--transition);
-            position: relative;
-            overflow: hidden;
         }
         .result-card.overall {
             border-color: var(--gold);
-            background: linear-gradient(135deg, #fffef9 0%, #fff 50%, #fffef7 100%);
-        }
-        .result-card.overall::before {
-            content: '';
-            position: absolute;
-            top: -18px;
-            right: -18px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: rgba(201, 168, 76, 0.1);
-            pointer-events: none;
+            background: linear-gradient(135deg, #fffef9, #fff, #fffef7);
         }
         .result-card .result-label {
             font-size: 0.78rem;
             font-weight: 600;
             color: #888;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
         .result-card .result-value {
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: 800;
             font-family: var(--font-mono);
-            transition: all var(--transition);
-            position: relative;
-            z-index: 1;
         }
         .result-value.pass {
             color: #006233;
@@ -492,26 +386,16 @@
         .result-value.fail {
             color: #D21034;
         }
-        .result-value.neutral {
+        .result-value.warn {
             color: #e67e22;
         }
-        .result-card.overall .result-value {
-            font-size: 2.8rem;
-        }
-        .result-card .result-icon {
-            font-size: 1.8rem;
-            margin-top: 2px;
-        }
-
-        /* ── Verdict Banner ── */
         .verdict-banner {
             border-radius: var(--radius);
-            padding: 14px 20px;
+            padding: 16px 22px;
             margin-bottom: 14px;
             text-align: center;
             font-weight: 700;
             font-size: 1.05rem;
-            transition: all var(--transition);
             display: none;
         }
         .verdict-banner.success {
@@ -520,7 +404,7 @@
             border: 2px solid #4CAF50;
             display: block;
         }
-        .verdict-banner.warning-verdict {
+        .verdict-banner.remedial {
             background: #fff8e1;
             color: #c79100;
             border: 2px solid #ffc107;
@@ -532,37 +416,28 @@
             border: 2px solid #ef5350;
             display: block;
         }
-
-        /* ── Actions Row ── */
-        .actions-row {
-            display: flex;
-            gap: 9px;
-            flex-wrap: wrap;
-            margin-bottom: 16px;
-        }
         .btn {
-            padding: 11px 20px;
+            padding: 12px 22px;
             border-radius: 25px;
             border: none;
             cursor: pointer;
             font-weight: 700;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             transition: all var(--transition);
             font-family: var(--font-body);
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
-            white-space: nowrap;
+            gap: 7px;
+            margin: 4px;
         }
         .btn-primary {
             background: #006233;
             color: #fff;
-            box-shadow: 0 4px 14px rgba(0, 98, 51, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 98, 51, 0.3);
         }
         .btn-primary:hover {
             background: #004d28;
             transform: translateY(-2px);
-            box-shadow: 0 8px 26px rgba(0, 98, 51, 0.4);
         }
         .btn-outline {
             background: #fff;
@@ -576,256 +451,93 @@
         .btn-gold {
             background: var(--gold);
             color: #1a1a2e;
-            box-shadow: 0 4px 14px rgba(201, 168, 76, 0.35);
+            box-shadow: 0 4px 16px rgba(201, 168, 76, 0.35);
         }
         .btn-gold:hover {
             background: #b8923b;
             transform: translateY(-2px);
-            box-shadow: 0 8px 26px rgba(201, 168, 76, 0.5);
         }
 
-        /* ── Developer Credit Section ── */
-        .dev-credit-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0d1b11 50%, #1a1a2e 100%);
+        /* Orientation Test */
+        .test-section {
+            background: linear-gradient(135deg, #fffef9, #fffdf5, #fffef7);
+            border: 2px solid var(--gold);
             border-radius: var(--radius);
-            padding: 20px 24px;
+            padding: 20px;
             margin-bottom: 14px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            border: 2px solid rgba(201, 168, 76, 0.5);
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
         }
-        .dev-credit-section::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: -30px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid rgba(201, 168, 76, 0.15);
-            pointer-events: none;
+        .test-section h3 {
+            color: #8b6914;
         }
-        .dev-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            z-index: 1;
+        .test-q {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fafbfc;
+            border-radius: 10px;
         }
-        .dev-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #1a1a2e;
-            border: 3px solid #fff;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-        }
-        .dev-text h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--gold-light);
-            margin-bottom: 2px;
-        }
-        .dev-text p {
-            font-size: 0.78rem;
-            opacity: 0.85;
-            margin: 0;
-        }
-        .dev-tagline {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.75);
-            z-index: 1;
-            text-align: center;
-            font-style: italic;
-            max-width: 280px;
-        }
-        .dev-tagline .highlight-5g {
-            color: var(--gold-light);
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        /* ── Contact / Subscription Section ── */
-        .contact-section {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 20px 22px;
-            margin-bottom: 14px;
-            box-shadow: var(--shadow);
-            border: 2px solid #e8d48b;
-            text-align: center;
-        }
-        .contact-section h3 {
-            font-family: var(--font-heading);
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #006233;
+        .test-q p {
+            font-weight: 600;
             margin-bottom: 6px;
         }
-        .contact-section .contact-subtitle {
-            font-size: 0.82rem;
-            color: #777;
-            margin-bottom: 14px;
-        }
-        .contact-form {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-        .contact-form input[type="email"] {
-            flex: 1;
-            min-width: 220px;
-            padding: 12px 16px;
-            border-radius: 25px;
-            border: 2px solid #dde;
-            font-size: 0.9rem;
-            font-family: var(--font-body);
-            background: #fafbfc;
-            transition: all var(--transition);
-        }
-        .contact-form input[type="email"]:focus {
-            outline: none;
-            border-color: #006233;
-            box-shadow: 0 0 0 4px rgba(0, 98, 51, 0.08);
-        }
-        .contact-form .btn-subscribe {
-            padding: 12px 22px;
-            border-radius: 25px;
-            border: none;
-            background: #006233;
-            color: #fff;
-            font-weight: 700;
+        .test-q label {
+            margin: 0 12px;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: all var(--transition);
-            white-space: nowrap;
         }
-        .contact-form .btn-subscribe:hover {
-            background: #004d28;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 98, 51, 0.3);
-        }
-        .subscribe-msg {
-            margin-top: 10px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            min-height: 22px;
-            transition: all var(--transition);
-        }
-        .subscribe-msg.success {
-            color: #006233;
-        }
-        .subscribe-msg.error {
-            color: #D21034;
+        .test-q input[type="radio"] {
+            margin-left: 5px;
+            accent-color: #006233;
         }
 
-        /* ── Footer ── */
+        /* Visitor counter */
+        .visitor-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: 700;
+            color: #006233;
+            border: 2px solid #006233;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
         .footer {
             text-align: center;
-            padding: 16px;
-            color: #999;
-            font-size: 0.78rem;
+            padding: 18px;
+            color: #777;
+            font-size: 0.8rem;
             border-top: 1px solid #e0e0e0;
-            margin-top: 6px;
+            margin-top: 10px;
         }
-        .footer .sci-decor {
-            display: inline-block;
-            margin: 0 5px;
-            opacity: 0.5;
-            font-size: 1rem;
-        }
-
-        /* ── Floating Symbols ── */
-        .floating-sci {
-            position: fixed;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.035;
-            font-size: 2.8rem;
-            font-family: serif;
-            animation: drift 22s linear infinite;
+        .footer .dev-signature {
+            font-weight: 700;
             color: #006233;
+            font-size: 0.9rem;
+            display: block;
+            margin: 4px 0;
         }
-        @keyframes drift {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-35px) rotate(4deg);
-            }
-            50% {
-                transform: translateY(-12px) rotate(-3deg);
-            }
-            75% {
-                transform: translateY(-45px) rotate(2deg);
-            }
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
+        .footer .dev-degree {
+            color: #8b6914;
+            font-weight: 600;
         }
-
-        /* ── Responsive ── */
         @media (max-width: 768px) {
+            .subjects-table {
+                font-size: 0.7rem;
+            }
+            .subjects-table input {
+                width: 40px;
+                font-size: 0.7rem;
+            }
             .header h1 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
-            .header-inner {
+            .form-row {
                 flex-direction: column;
-                text-align: center;
-            }
-            .subjects-grid {
-                grid-template-columns: 1fr;
             }
             .result-value {
-                font-size: 1.7rem !important;
-            }
-            .result-card.overall .result-value {
-                font-size: 2.1rem !important;
-            }
-            .lang-switcher {
-                justify-content: center;
-            }
-            .semester-tab {
-                padding: 10px 12px;
-                font-size: 0.78rem;
-            }
-            .subject-inputs {
-                flex-direction: column;
-                gap: 6px;
-            }
-            .dev-credit-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            .contact-form {
-                flex-direction: column;
-            }
-            .contact-form input[type="email"] {
-                width: 100%;
-            }
-        }
-        @media (max-width: 400px) {
-            .subject-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .semester-tabs {
-                flex-direction: column;
+                font-size: 1.6rem !important;
             }
         }
         @media print {
@@ -833,60 +545,35 @@
                 background: #fff;
             }
             .header,
-            .selector-card,
-            .semester-tabs,
-            .actions-row,
+            .ticker-wrap,
             .lang-switcher,
+            .btn,
+            .test-section,
+            .visitor-badge,
             .footer,
-            .floating-sci,
-            body::before,
-            .dev-credit-section,
-            .contact-section,
-            .info-bar {
+            body::before {
                 display: none !important;
             }
-            .subjects-card,
-            .results-panel,
-            .verdict-banner {
+            .card,
+            .result-card {
                 box-shadow: none;
                 border: 1px solid #ccc;
                 break-inside: avoid;
-            }
-            .result-card {
-                box-shadow: none;
-                border: 1px solid #ddd;
             }
         }
     </style>
 </head>
 <body>
-
-    <span class="floating-sci" style="top:7%;left:4%;animation-delay:0s;">∑</span>
-    <span class="floating-sci" style="top:18%;right:7%;animation-delay:3s;">∫</span>
-    <span class="floating-sci" style="top:42%;left:3%;animation-delay:7s;">π</span>
-    <span class="floating-sci" style="top:58%;right:4%;animation-delay:11s;">√</span>
-    <span class="floating-sci" style="top:72%;left:6%;animation-delay:15s;">Δ</span>
-    <span class="floating-sci" style="top:83%;right:9%;animation-delay:2s;">Ω</span>
-    <span class="floating-sci" style="top:33%;right:14%;animation-delay:5s;">∞</span>
-    <span class="floating-sci" style="top:52%;left:11%;animation-delay:9s;">∇</span>
-    <span class="floating-sci" style="top:88%;left:16%;animation-delay:13s;">α</span>
-    <span class="floating-sci" style="top:13%;left:19%;animation-delay:17s;">β</span>
-
     <div class="app-container">
-        <!-- ── Header ── -->
+        <!-- Header -->
         <header class="header">
             <div class="header-inner">
                 <div class="header-title-group">
                     <span class="logo-icon">🧮</span>
                     <div>
                         <h1 data-i18n="appTitle">حاسبة المعدلات الفصلية</h1>
-                        <span class="subtitle" data-i18n="appSubtitle">الطور الثانوي الجزائري · جميع الشعب</span>
-                        <span class="dev-badge">
-                            <span class="dev-icon">👨‍🏫</span>
-                            <span data-i18n="devBy">تطوير: أ. خليل زهير</span>
-                            <span style="opacity:0.7;">|</span>
-                            <span data-i18n="devDegree">ماستر رياضيات وإعلام آلي</span>
-                        </span>
+                        <span class="subtitle" data-i18n="appSubtitle">الطور الثانوي الجزائري · جميع المستويات والشعب</span>
+                        <span class="dev-badge">👨‍🏫 <span data-i18n="devBy">من تطوير الأستاذ: خليل زهير</span> 🎓</span>
                     </div>
                 </div>
                 <div class="lang-switcher" id="langSwitcher">
@@ -898,801 +585,964 @@
             </div>
         </header>
 
-        <!-- ── Stream Selector ── -->
-        <div class="selector-card">
-            <label for="streamSelect" data-i18n="selectStream">📚 اختر الشعبة:</label>
-            <select class="stream-select" id="streamSelect">
-                <option value="sciences_experimentales" data-i18n="stream_sci_exp">🔬 علوم تجريبية</option>
-                <option value="mathematiques" data-i18n="stream_math">📐 رياضيات</option>
-                <option value="technique_math" data-i18n="stream_tech">⚙️ تقني رياضي</option>
-                <option value="lettres_philo" data-i18n="stream_lettres">📖 آداب وفلسفة</option>
-                <option value="langues_etrangeres" data-i18n="stream_langues">🌍 لغات أجنبية</option>
-                <option value="gestion_economie" data-i18n="stream_gestion">💼 تسيير واقتصاد</option>
-            </select>
+        <!-- Visitor Counter -->
+        <div style="text-align:center;margin-bottom:10px;">
+            <span class="visitor-badge">👁️ <span data-i18n="visitors">زوار الموقع</span>: <strong id="visitorCount">0</strong></span>
         </div>
 
-        <!-- ── Semester Tabs ── -->
-        <div class="semester-tabs" id="semesterTabs">
-            <button class="semester-tab active" data-semester="1">
-                📅 <span data-i18n="semester1">الفصل الأول</span>
-                <span class="tab-avg" id="tabAvg1">—</span>
-            </button>
-            <button class="semester-tab" data-semester="2">
-                📅 <span data-i18n="semester2">الفصل الثاني</span>
-                <span class="tab-avg" id="tabAvg2">—</span>
-            </button>
-            <button class="semester-tab" data-semester="3">
-                📅 <span data-i18n="semester3">الفصل الثالث</span>
-                <span class="tab-avg" id="tabAvg3">—</span>
-            </button>
-        </div>
-
-        <!-- ── Weighting Info Bar ── -->
-        <div class="info-bar">
-            <span data-i18n="weightingInfo">🧪 طريقة الحساب لكل مادة:</span>
-            <span class="formula-badge" data-i18n="formulaDisplay">(تقويم مستمر × 40%) + (اختبار × 60%)</span>
-            <span data-i18n="noProjectNote">⛔ بدون تثمين المشاريع</span>
-        </div>
-
-        <!-- ── Subjects Input ── -->
-        <div class="subjects-card" id="subjectsCard">
-            <h3>
-                <span>📝</span>
-                <span data-i18n="enterGrades">أدخل النقاط (من 0 إلى 20)</span>
-                <span style="font-size:0.78rem;opacity:0.65;">— <span data-i18n="currentSemester">الفصل الأول</span></span>
-            </h3>
-            <div class="subjects-grid" id="subjectsGrid"></div>
-        </div>
-
-        <!-- ── Results ── -->
-        <div class="results-panel" id="resultsPanel">
-            <div class="result-card" id="resultCard1">
-                <div class="result-label">📊 <span data-i18n="semester1">الفصل الأول</span></div>
-                <div class="result-value neutral" id="avg1">—</div>
-                <div class="result-icon">🔹</div>
-            </div>
-            <div class="result-card" id="resultCard2">
-                <div class="result-label">📊 <span data-i18n="semester2">الفصل الثاني</span></div>
-                <div class="result-value neutral" id="avg2">—</div>
-                <div class="result-icon">🔹</div>
-            </div>
-            <div class="result-card" id="resultCard3">
-                <div class="result-label">📊 <span data-i18n="semester3">الفصل الثالث</span></div>
-                <div class="result-value neutral" id="avg3">—</div>
-                <div class="result-icon">🔹</div>
-            </div>
-            <div class="result-card overall" id="resultCardOverall">
-                <div class="result-label">🏆 <span data-i18n="overallAverage">المعدل العام</span></div>
-                <div class="result-value neutral" id="avgOverall">—</div>
-                <div class="result-icon">⭐</div>
+        <!-- Motivational Ticker -->
+        <div class="ticker-wrap">
+            <div class="ticker" id="tickerContent">
+                <span>🌟 اطلبوا العلم من المهد إلى اللحد 🌟</span>
+                <span>📚 العلم نور والجهل ظلام 📚</span>
+                <span>💪 بالجد والمثابرة تبلغ المراتب العليا 💪</span>
+                <span>🏆 النجاح يبدأ بخطوة... فلتكن خطوتك اليوم 🏆</span>
+                <span>🧠 العقل السليم في الجسم السليم 🧠</span>
+                <span>🌙 وَقُل رَّبِّ زِدْنِي عِلْمًا 🌙</span>
+                <span>🔬 الجزائر تزدهر بعلمائها وشبابها 🔬</span>
+                <span>⭐ لا تنتظر الفرصة... بل اصنعها بنفسك ⭐</span>
+                <span>🌟 اطلبوا العلم من المهد إلى اللحد 🌟</span>
+                <span>📚 العلم نور والجهل ظلام 📚</span>
+                <span>💪 بالجد والمثابرة تبلغ المراتب العليا 💪</span>
+                <span>🏆 النجاح يبدأ بخطوة... فلتكن خطوتك اليوم 🏆</span>
+                <span>🧠 العقل السليم في الجسم السليم 🧠</span>
+                <span>🌙 وَقُل رَّبِّ زِدْنِي عِلْمًا 🌙</span>
+                <span>🔬 الجزائر تزدهر بعلمائها وشبابها 🔬</span>
+                <span>⭐ لا تنتظر الفرصة... بل اصنعها بنفسك ⭐</span>
             </div>
         </div>
 
-        <!-- ── Verdict ── -->
-        <div class="verdict-banner" id="verdictBanner"></div>
-
-        <!-- ── Actions ── -->
-        <div class="actions-row">
-            <button class="btn btn-primary" id="btnCalculate" data-i18n="calculate">🧮 احسب المعدلات</button>
-            <button class="btn btn-outline" id="btnReset" data-i18n="reset">🔄 إعادة تعيين</button>
-            <button class="btn btn-gold" id="btnPrint" data-i18n="print">🖨️ طباعة النتائج</button>
-            <button class="btn btn-outline" id="btnSave" data-i18n="save">💾 حفظ البيانات</button>
-        </div>
-
-        <!-- ── Developer Credit Section ── -->
-        <div class="dev-credit-section">
-            <div class="dev-info">
-                <div class="dev-avatar">خ.ز</div>
-                <div class="dev-text">
-                    <h4 data-i18n="devFullCredit">👨‍💻 من تطوير الأستاذ: خليل زهير</h4>
-                    <p data-i18n="devFullDegree">🎓 ماستر في ميدان الرياضيات والإعلام الآلي</p>
+        <!-- Student Info -->
+        <div class="card">
+            <h3>👤 <span data-i18n="studentInfo">معلومات التلميذ</span></h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label data-i18n="firstName">الاسم</label>
+                    <input type="text" id="firstName" placeholder="الاسم" data-i18n-placeholder="firstNamePlaceholder">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="lastName">اللقب</label>
+                    <input type="text" id="lastName" placeholder="اللقب" data-i18n-placeholder="lastNamePlaceholder">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="level">المستوى التعليمي</label>
+                    <select id="levelSelect">
+                        <option value="1" data-i18n="level1">أولى ثانوي (جذع مشترك)</option>
+                        <option value="2" data-i18n="level2">ثانية ثانوي</option>
+                        <option value="3" data-i18n="level3">ثالثة ثانوي</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="stream">الشعبة</label>
+                    <select id="streamSelect"></select>
                 </div>
             </div>
-            <div class="dev-tagline">
-                <span data-i18n="tagline5G">معًا من أجل مجتمع تربوي</span><br>
-                <span data-i18n="tagline5G2">يتواكب مع تكنولوجيا</span>
-                <span class="highlight-5g" data-i18n="gen5">الجيل الخامس 5G</span> 🌐
+        </div>
+
+        <!-- Semester Tabs -->
+        <div class="semester-tabs" id="semesterTabs">
+            <button class="semester-tab active" data-semester="1">📅 <span data-i18n="semester1">الفصل الأول</span><span class="tab-avg" id="tabAvg1">—</span></button>
+            <button class="semester-tab" data-semester="2">📅 <span data-i18n="semester2">الفصل الثاني</span><span class="tab-avg" id="tabAvg2">—</span></button>
+            <button class="semester-tab" data-semester="3">📅 <span data-i18n="semester3">الفصل الثالث</span><span class="tab-avg" id="tabAvg3">—</span></button>
+        </div>
+
+        <!-- Subjects Table -->
+        <div class="card" id="subjectsCard">
+            <h3>📝 <span data-i18n="enterGrades">أدخل النقاط (من 0 إلى 20)</span> — <span id="currentSemLabel" data-i18n="semester1">الفصل الأول</span></h3>
+            <div style="overflow-x:auto;">
+                <table class="subjects-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="subject">المادة</th>
+                            <th data-i18n="coef">المعامل</th>
+                            <th data-i18n="continuous">التقويم المستمر /20</th>
+                            <th data-i18n="assignment">معدل الفرض /20</th>
+                            <th data-i18n="exam">الاختبار /20</th>
+                            <th data-i18n="subjAvg">معدل المادة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subjectsTableBody"></tbody>
+                </table>
             </div>
         </div>
 
-        <!-- ── Contact / Subscription Section ── -->
-        <div class="contact-section" id="contactSection">
-            <h3 data-i18n="contactTitle">📬 تواصل مع مدير الموقع</h3>
-            <p class="contact-subtitle" data-i18n="contactSubtitle">أدخل بريدك الإلكتروني لترك تعليق وليصلك كل جديد</p>
-            <div class="contact-form" id="contactForm">
-                <input type="email" id="contactEmail" placeholder="example@email.com" data-i18n-placeholder="emailPlaceholder" required>
-                <button class="btn-subscribe" id="btnSubscribe" data-i18n="subscribeBtn">📩 اشترك الآن</button>
-            </div>
-            <div class="subscribe-msg" id="subscribeMsg"></div>
+        <!-- Buttons -->
+        <div style="text-align:center;margin-bottom:14px;">
+            <button class="btn btn-primary" id="btnCalculate">🧮 <span data-i18n="calculate">احسب المعدلات</span></button>
+            <button class="btn btn-outline" id="btnReset">🔄 <span data-i18n="reset">إعادة تعيين</span></button>
+            <button class="btn btn-gold" id="btnPrint">🖨️ <span data-i18n="print">طباعة</span></button>
+            <button class="btn btn-outline" id="btnSave">💾 <span data-i18n="save">حفظ</span></button>
         </div>
 
-        <!-- ── Footer ── -->
+        <!-- Results -->
+        <div class="results-panel" id="resultsPanel">
+            <div class="result-card"><div class="result-label">📊 <span data-i18n="semester1">الفصل الأول</span></div><div class="result-value" id="avg1">—</div></div>
+            <div class="result-card"><div class="result-label">📊 <span data-i18n="semester2">الفصل الثاني</span></div><div class="result-value" id="avg2">—</div></div>
+            <div class="result-card"><div class="result-label">📊 <span data-i18n="semester3">الفصل الثالث</span></div><div class="result-value" id="avg3">—</div></div>
+            <div class="result-card overall"><div class="result-label">🏆 <span data-i18n="annualAvg">المعدل السنوي</span></div><div class="result-value" id="avgAnnual">—</div></div>
+        </div>
+        <div class="verdict-banner" id="verdictBanner"></div>
+
+        <!-- Orientation Test (visible for 1st year) -->
+        <div class="test-section" id="orientationSection" style="display:none;">
+            <h3>🧭 <span data-i18n="orientationTest">اختبار التوجيه الذكي</span> — <span data-i18n="orientationDesc">للسنة أولى ثانوي لاكتشاف الشعبة المناسبة</span></h3>
+            <p style="font-size:0.85rem;color:#666;" data-i18n="orientationHint">أجب عن الأسئلة التالية بصدق لمساعدتك في اختيار شعبة السنة الثانية ثانوي.</p>
+            <div id="orientationQuestions"></div>
+            <button class="btn btn-gold" id="btnOrientation" style="margin-top:12px;">🔍 <span data-i18n="discoverStream">اكتشف شعبتك المناسبة</span></button>
+            <div id="orientationResult" style="margin-top:14px;padding:14px;border-radius:12px;display:none;font-weight:700;text-align:center;"></div>
+        </div>
+
+        <!-- Email Subscription -->
+        <div class="card" style="text-align:center;">
+            <h3>📧 <span data-i18n="subscribe">تواصل مع مدير الموقع</span></h3>
+            <p style="font-size:0.85rem;color:#666;" data-i18n="subscribeDesc">أدخل بريدك الإلكتروني لترك تعليق وليصلك كل جديد.</p>
+            <div style="display:flex;gap:8px;max-width:450px;margin:10px auto;flex-wrap:wrap;justify-content:center;">
+                <input type="email" id="emailInput" placeholder="example@email.com" style="flex:1;min-width:200px;padding:11px 14px;border-radius:25px;border:2px solid #dde;font-size:0.9rem;">
+                <button class="btn btn-primary" id="btnSubscribe">📩 <span data-i18n="send">إرسال</span></button>
+            </div>
+            <p id="subscribeMsg" style="font-size:0.8rem;color:#4CAF50;margin-top:6px;"></p>
+        </div>
+
+        <!-- Footer -->
         <div class="footer">
-            <span class="sci-decor">∑</span>
-            <span data-i18n="footerText">حاسبة المعدلات للطور الثانوي الجزائري · الجزائر 🇩🇿</span>
-            <span class="sci-decor">∫</span>
-            <span style="margin:0 6px;">|</span>
-            <span class="sci-decor">π</span>
-            <span data-i18n="footerCredit">تطوير: أ. خليل زهير · ماستر رياضيات وإعلام آلي</span>
-            <span class="sci-decor">√</span>
+            <span class="dev-signature">👨‍🏫 <span data-i18n="devByFooter">من تطوير الأستاذ: خليل زهير</span></span>
+            <span class="dev-degree">🎓 <span data-i18n="degree">ماستر في ميدان الرياضيات والإعلام الآلي</span></span>
+            <span style="display:block;margin:4px 0;color:#006233;font-weight:600;">🌐 <span data-i18n="motto">معًا من أجل مجتمع تربوي يتواكب مع تكنولوجيا الجيل الخامس 5G</span> 🌐</span>
+            <span style="color:#999;">© 2025 <span data-i18n="allRights">جميع الحقوق محفوظة</span> · الجزائر 🇩🇿</span>
         </div>
     </div>
 
     <script>
         (function() {
-            // ═══════════════ DATA: Streams & Subjects ═══════════════
-            const streamsData = {
-                sciences_experimentales: {
-                    name_ar: 'علوم تجريبية',
-                    name_en: 'Experimental Sciences',
-                    name_fr: 'Sciences Expérimentales',
-                    name_zh: '实验科学',
-                    subjects: [
-                        { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic Language',
-                            name_fr: 'Langue Arabe', name_zh: '阿拉伯语', coef: 3 },
-                        { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French Language',
-                            name_fr: 'Langue Française', name_zh: '法语', coef: 2 },
-                        { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English Language',
-                            name_fr: 'Langue Anglaise', name_zh: '英语', coef: 2 },
-                        { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
-                            name_zh: '数学', coef: 5 },
-                        { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
-                            name_zh: '物理', coef: 4 },
-                        { id: 'science', name_ar: 'العلوم الطبيعية', name_en: 'Natural Sciences',
-                            name_fr: 'Sciences Naturelles', name_zh: '自然科学', coef: 4 },
-                        { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
-                            name_fr: 'Histoire & Géographie', name_zh: '历史地理', coef: 2 },
-                        { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
-                            name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
-                        { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
-                            name_zh: '哲学', coef: 2 },
-                        { id: 'sport', name_ar: 'التربية البدنية', name_en: 'Physical Education',
-                            name_fr: 'Éducation Physique', name_zh: '体育', coef: 1 },
-                        { id: 'tamazight', name_ar: 'الأمازيغية', name_en: 'Tamazight', name_fr: 'Tamazight',
-                            name_zh: '塔马齐格特语', coef: 2 },
-                    ]
+            // ==================== DATA ====================
+            const levelStreams = {
+                1: {
+                    'sciences_common': { name_ar: 'جذع مشترك علوم وتكنولوجيا', name_en: 'Common Core Sciences & Technology',
+                        name_fr: 'Tronc Commun Sciences & Technologie', name_zh: '公共核心科学与技术', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 2 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 2 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 5 },
+                            { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
+                                name_zh: '物理', coef: 4 },
+                            { id: 'science', name_ar: 'العلوم الطبيعية', name_en: 'Natural Sciences',
+                                name_fr: 'Sciences Naturelles', name_zh: '自然科学', coef: 3 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'Physical Education',
+                                name_fr: 'EPS', name_zh: '体育', coef: 1 },
+                            { id: 'info', name_ar: 'الإعلام الآلي', name_en: 'Computer Science', name_fr: 'Informatique',
+                                name_zh: '计算机科学', coef: 1 },
+                        ] },
+                    'letters_common': { name_ar: 'جذع مشترك آداب', name_en: 'Common Core Literature', name_fr: 'Tronc Commun Lettres',
+                        name_zh: '公共核心文学', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية وآدابها', name_en: 'Arabic Literature',
+                                name_fr: 'Arabe Littérature', name_zh: '阿拉伯文学', coef: 5 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 3 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 3 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 3 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 3 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'Physical Education',
+                                name_fr: 'EPS', name_zh: '体育', coef: 1 },
+                        ] }
                 },
-                mathematiques: {
-                    name_ar: 'رياضيات',
-                    name_en: 'Mathematics',
-                    name_fr: 'Mathématiques',
-                    name_zh: '数学',
-                    subjects: [
-                        { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic Language',
-                            name_fr: 'Langue Arabe', name_zh: '阿拉伯语', coef: 3 },
-                        { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French Language',
-                            name_fr: 'Langue Française', name_zh: '法语', coef: 2 },
-                        { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English Language',
-                            name_fr: 'Langue Anglaise', name_zh: '英语', coef: 2 },
-                        { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
-                            name_zh: '数学', coef: 7 },
-                        { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
-                            name_zh: '物理', coef: 6 },
-                        { id: 'science', name_ar: 'العلوم الطبيعية', name_en: 'Natural Sciences',
-                            name_fr: 'Sciences Naturelles', name_zh: '自然科学', coef: 2 },
-                        { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
-                            name_fr: 'Histoire & Géographie', name_zh: '历史地理', coef: 2 },
-                        { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
-                            name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
-                        { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
-                            name_zh: '哲学', coef: 2 },
-                        { id: 'sport', name_ar: 'التربية البدنية', name_en: 'Physical Education',
-                            name_fr: 'Éducation Physique', name_zh: '体育', coef: 1 },
-                    ]
-                },
-                technique_math: {
-                    name_ar: 'تقني رياضي',
-                    name_en: 'Technical Mathematics',
-                    name_fr: 'Technique Mathématiques',
-                    name_zh: '技术数学',
-                    subjects: [
-                        { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic Language',
-                            name_fr: 'Langue Arabe', name_zh: '阿拉伯语', coef: 3 },
-                        { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French Language',
-                            name_fr: 'Langue Française', name_zh: '法语', coef: 2 },
-                        { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English Language',
-                            name_fr: 'Langue Anglaise', name_zh: '英语', coef: 2 },
-                        { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
-                            name_zh: '数学', coef: 7 },
-                        { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
-                            name_zh: '物理', coef: 6 },
-                        { id: 'tech_ing', name_ar: 'الهندسة المدنية / هندسة الطرائق', name_en: 'Civil/Process Engineering',
-                            name_fr: 'Génie Civil / Génie des Procédés', name_zh: '土木/工艺工程', coef: 4 },
-                        { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
-                            name_fr: 'Histoire & Géographie', name_zh: '历史地理', coef: 2 },
-                        { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
-                            name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
-                        { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
-                            name_zh: '哲学', coef: 2 },
-                        { id: 'sport', name_ar: 'التربية البدنية', name_en: 'Physical Education',
-                            name_fr: 'Éducation Physique', name_zh: '体育', coef: 1 },
-                    ]
-                },
-                lettres_philo: {
-                    name_ar: 'آداب وفلسفة',
-                    name_en: 'Literature & Philosophy',
-                    name_fr: 'Lettres & Philosophie',
-                    name_zh: '文学与哲学',
-                    subjects: [
-                        { id: 'arabic', name_ar: 'اللغة العربية وآدابها', name_en: 'Arabic Language & Literature',
-                            name_fr: 'Langue Arabe & Littérature', name_zh: '阿拉伯语言文学', coef: 6 },
-                        { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French Language',
-                            name_fr: 'Langue Française', name_zh: '法语', coef: 3 },
-                        { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English Language',
-                            name_fr: 'Langue Anglaise', name_zh: '英语', coef: 3 },
-                        { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
-                            name_zh: '数学', coef: 2 },
-                        { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
-                            name_fr: 'Histoire & Géographie', name_zh: '历史地理', coef: 4 },
-                        { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
-                            name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
-                        { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
-                            name_zh: '哲学', coef: 6 },
-                        { id: 'sport', name_ar: 'التربية البدنية', name_en: 'Physical Education',
-                            name_fr: 'Éducation Physique', name_zh: '体育', coef: 1 },
-                    ]
-                },
-                langues_etrangeres: {
-                    name_ar: 'لغات أجنبية',
-                    name_en: 'Foreign Languages',
-                    name_fr: 'Langues Étrangères',
-                    name_zh: '外语',
-                    subjects: [
-                        { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic Language',
-                            name_fr: 'Langue Arabe', name_zh: '阿拉伯语', coef: 3 },
-                        { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French Language',
-                            name_fr: 'Langue Française', name_zh: '法语', coef: 5 },
-                        { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English Language',
-                            name_fr: 'Langue Anglaise', name_zh: '英语', coef: 5 },
-                        { id: 'spanish', name_ar: 'اللغة الإسبانية / الألمانية', name_en: 'Spanish / German',
-                            name_fr: 'Espagnol / Allemand', name_zh: '西班牙语/德语', coef: 4 },
-                        { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
-                            name_zh: '数学', coef: 2 },
-                        { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
-                            name_fr: 'Histoire & Géographie', name_zh: '历史地理', coef: 2 },
-                        { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
-                            name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
-                        { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
-                            name_zh: '哲学', coef: 2 },
-                        { id: 'sport', name_ar: 'التربية البدنية', name_en: 'Physical Education',
-                            name_fr: 'Éducation Physique', name_zh: '体育', coef: 1 },
-                    ]
-                },
-                gestion_economie: {
-                    name_ar: 'تسيير واقتصاد',
-                    name_en: 'Management & Economics',
-                    name_fr: 'Gestion & Économie',
-                    name_zh: '管理与经济',
-                    subjects: [
-                        { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic Language',
-                            name_fr: 'Langue Arabe', name_zh: '阿拉伯语', coef: 3 },
-                        { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French Language',
-                            name_fr: 'Langue Française', name_zh: '法语', coef: 2 },
-                        { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English Language',
-                            name_fr: 'Langue Anglaise', name_zh: '英语', coef: 2 },
-                        { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
-                            name_zh: '数学', coef: 5 },
-                        { id: 'gestion', name_ar: 'التسيير المحاسبي والمالي', name_en: 'Accounting & Financial Management',
-                            name_fr: 'Gestion Comptable & Financière', name_zh: '会计与财务管理', coef: 6 },
-                        { id: 'law', name_ar: 'القانون', name_en: 'Law', name_fr: 'Droit', name_zh: '法律',
+                2: {
+                    'sciences_experimentales': { name_ar: 'علوم تجريبية', name_en: 'Experimental Sciences',
+                        name_fr: 'Sciences Expérimentales', name_zh: '实验科学', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 2 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 2 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 5 },
+                            { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
+                                name_zh: '物理', coef: 4 },
+                            { id: 'science', name_ar: 'العلوم الطبيعية', name_en: 'Natural Sciences',
+                                name_fr: 'Sciences Naturelles', name_zh: '自然科学', coef: 4 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                            { id: 'tamazight', name_ar: 'الأمازيغية', name_en: 'Tamazight', name_fr: 'Tamazight',
+                                name_zh: '塔马齐格特语', coef: 2 },
+                        ] },
+                    'mathematiques': { name_ar: 'رياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                        name_zh: '数学', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 2 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 2 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 7 },
+                            { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
+                                name_zh: '物理', coef: 6 },
+                            { id: 'science', name_ar: 'العلوم الطبيعية', name_en: 'Natural Sciences',
+                                name_fr: 'Sciences Naturelles', name_zh: '自然科学', coef: 2 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
+                    'technique_math': { name_ar: 'تقني رياضي', name_en: 'Technical Math', name_fr: 'Technique Math',
+                        name_zh: '技术数学', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 2 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 2 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 7 },
+                            { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
+                                name_zh: '物理', coef: 6 },
+                            { id: 'tech', name_ar: 'هندسة مدنية/طرائق', name_en: 'Civil/Process Eng.',
+                                name_fr: 'Génie Civil/Procédés', name_zh: '土木/工艺工程', coef: 4 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
+                    'lettres_philo': { name_ar: 'آداب وفلسفة', name_en: 'Literature & Philosophy',
+                        name_fr: 'Lettres & Philosophie', name_zh: '文学与哲学', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية وآدابها', name_en: 'Arabic Literature',
+                                name_fr: 'Arabe Littérature', name_zh: '阿拉伯文学', coef: 6 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 3 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 3 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 2 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 4 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 6 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
+                    'langues_etrangeres': { name_ar: 'لغات أجنبية', name_en: 'Foreign Languages',
+                        name_fr: 'Langues Étrangères', name_zh: '外语', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 5 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 5 },
+                            { id: 'spanish', name_ar: 'الإسبانية/الألمانية', name_en: 'Spanish/German',
+                                name_fr: 'Espagnol/Allemand', name_zh: '西班牙语/德语', coef: 4 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 2 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
+                    'gestion_economie': { name_ar: 'تسيير واقتصاد', name_en: 'Management & Economics',
+                        name_fr: 'Gestion & Économie', name_zh: '管理与经济', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 2 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 2 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 5 },
+                            { id: 'gestion', name_ar: 'التسيير المحاسبي والمالي', name_en: 'Accounting & Finance',
+                                name_fr: 'Gestion Comptable', name_zh: '会计与财务', coef: 6 },
+                            { id: 'law', name_ar: 'القانون', name_en: 'Law', name_fr: 'Droit', name_zh: '法律',
                             coef: 2 },
-                        { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
-                            name_fr: 'Histoire & Géographie', name_zh: '历史地理', coef: 2 },
-                        { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
-                            name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
-                        { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
-                            name_zh: '哲学', coef: 2 },
-                        { id: 'sport', name_ar: 'التربية البدنية', name_en: 'Physical Education',
-                            name_fr: 'Éducation Physique', name_zh: '体育', coef: 1 },
-                    ]
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
+                },
+                3: {
+                    'sciences_experimentales': { name_ar: 'علوم تجريبية', name_en: 'Experimental Sciences',
+                        name_fr: 'Sciences Expérimentales', name_zh: '实验科学', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 2 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 2 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 5 },
+                            { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
+                                name_zh: '物理', coef: 4 },
+                            { id: 'science', name_ar: 'العلوم الطبيعية', name_en: 'Natural Sciences',
+                                name_fr: 'Sciences Naturelles', name_zh: '自然科学', coef: 4 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                            { id: 'tamazight', name_ar: 'الأمازيغية', name_en: 'Tamazight', name_fr: 'Tamazight',
+                                name_zh: '塔马齐格特语', coef: 2 },
+                        ] },
+                    'mathematiques': { name_ar: 'رياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                        name_zh: '数学', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 2 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 2 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 7 },
+                            { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
+                                name_zh: '物理', coef: 6 },
+                            { id: 'science', name_ar: 'العلوم الطبيعية', name_en: 'Natural Sciences',
+                                name_fr: 'Sciences Naturelles', name_zh: '自然科学', coef: 2 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
+                    'technique_math': { name_ar: 'تقني رياضي', name_en: 'Technical Math', name_fr: 'Technique Math',
+                        name_zh: '技术数学', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 2 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 2 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 7 },
+                            { id: 'physics', name_ar: 'الفيزياء', name_en: 'Physics', name_fr: 'Physique',
+                                name_zh: '物理', coef: 6 },
+                            { id: 'tech', name_ar: 'هندسة مدنية/طرائق', name_en: 'Civil/Process Eng.',
+                                name_fr: 'Génie Civil/Procédés', name_zh: '土木/工艺工程', coef: 4 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
+                    'lettres_philo': { name_ar: 'آداب وفلسفة', name_en: 'Literature & Philosophy',
+                        name_fr: 'Lettres & Philosophie', name_zh: '文学与哲学', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية وآدابها', name_en: 'Arabic Literature',
+                                name_fr: 'Arabe Littérature', name_zh: '阿拉伯文学', coef: 6 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 3 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 3 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 2 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 4 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 6 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
+                    'langues_etrangeres': { name_ar: 'لغات أجنبية', name_en: 'Foreign Languages',
+                        name_fr: 'Langues Étrangères', name_zh: '外语', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 5 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 5 },
+                            { id: 'spanish', name_ar: 'الإسبانية/الألمانية', name_en: 'Spanish/German',
+                                name_fr: 'Espagnol/Allemand', name_zh: '西班牙语/德语', coef: 4 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 2 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
+                    'gestion_economie': { name_ar: 'تسيير واقتصاد', name_en: 'Management & Economics',
+                        name_fr: 'Gestion & Économie', name_zh: '管理与经济', subjects: [
+                            { id: 'arabic', name_ar: 'اللغة العربية', name_en: 'Arabic', name_fr: 'Arabe',
+                                name_zh: '阿拉伯语', coef: 3 },
+                            { id: 'french', name_ar: 'اللغة الفرنسية', name_en: 'French', name_fr: 'Français',
+                                name_zh: '法语', coef: 2 },
+                            { id: 'english', name_ar: 'اللغة الإنجليزية', name_en: 'English', name_fr: 'Anglais',
+                                name_zh: '英语', coef: 2 },
+                            { id: 'math', name_ar: 'الرياضيات', name_en: 'Mathematics', name_fr: 'Mathématiques',
+                                name_zh: '数学', coef: 5 },
+                            { id: 'gestion', name_ar: 'التسيير المحاسبي والمالي', name_en: 'Accounting & Finance',
+                                name_fr: 'Gestion Comptable', name_zh: '会计与财务', coef: 6 },
+                            { id: 'law', name_ar: 'القانون', name_en: 'Law', name_fr: 'Droit', name_zh: '法律',
+                            coef: 2 },
+                            { id: 'history_geo', name_ar: 'التاريخ والجغرافيا', name_en: 'History & Geography',
+                                name_fr: 'Histoire & Géo', name_zh: '历史地理', coef: 2 },
+                            { id: 'islamic', name_ar: 'التربية الإسلامية', name_en: 'Islamic Education',
+                                name_fr: 'Éducation Islamique', name_zh: '伊斯兰教育', coef: 2 },
+                            { id: 'philosophy', name_ar: 'الفلسفة', name_en: 'Philosophy', name_fr: 'Philosophie',
+                                name_zh: '哲学', coef: 2 },
+                            { id: 'sport', name_ar: 'التربية البدنية', name_en: 'PE', name_fr: 'EPS', name_zh: '体育',
+                                coef: 1 },
+                        ] },
                 }
             };
 
-            // ═══════════════ TRANSLATIONS ═══════════════
+            // ==================== TRANSLATIONS ====================
             const translations = {
                 ar: {
                     appTitle: 'حاسبة المعدلات الفصلية',
-                    appSubtitle: 'الطور الثانوي الجزائري · جميع الشعب',
-                    devBy: 'تطوير: أ. خليل زهير',
-                    devDegree: 'ماستر رياضيات وإعلام آلي',
-                    selectStream: '📚 اختر الشعبة:',
-                    stream_sci_exp: '🔬 علوم تجريبية',
-                    stream_math: '📐 رياضيات',
-                    stream_tech: '⚙️ تقني رياضي',
-                    stream_lettres: '📖 آداب وفلسفة',
-                    stream_langues: '🌍 لغات أجنبية',
-                    stream_gestion: '💼 تسيير واقتصاد',
+                    appSubtitle: 'الطور الثانوي الجزائري · جميع المستويات والشعب',
+                    devBy: 'من تطوير الأستاذ: خليل زهير',
+                    visitors: 'زوار الموقع',
+                    studentInfo: 'معلومات التلميذ',
+                    firstName: 'الاسم',
+                    lastName: 'اللقب',
+                    firstNamePlaceholder: 'أدخل الاسم',
+                    lastNamePlaceholder: 'أدخل اللقب',
+                    level: 'المستوى التعليمي',
+                    level1: 'أولى ثانوي (جذع مشترك)',
+                    level2: 'ثانية ثانوي',
+                    level3: 'ثالثة ثانوي',
+                    stream: 'الشعبة',
                     semester1: 'الفصل الأول',
                     semester2: 'الفصل الثاني',
                     semester3: 'الفصل الثالث',
-                    weightingInfo: '🧪 طريقة الحساب لكل مادة:',
-                    formulaDisplay: '(تقويم مستمر × 40%) + (اختبار × 60%)',
-                    noProjectNote: '⛔ بدون تثمين المشاريع',
                     enterGrades: 'أدخل النقاط (من 0 إلى 20)',
-                    currentSemester: 'الفصل الأول',
-                    overallAverage: 'المعدل العام',
-                    continuousLabel: 'التقويم المستمر',
-                    examLabel: 'الاختبار',
-                    subjectAvgLabel: 'معدل المادة',
-                    calculate: '🧮 احسب المعدلات',
-                    reset: '🔄 إعادة تعيين',
-                    print: '🖨️ طباعة النتائج',
-                    save: '💾 حفظ البيانات',
-                    devFullCredit: '👨‍💻 من تطوير الأستاذ: خليل زهير',
-                    devFullDegree: '🎓 ماستر في ميدان الرياضيات والإعلام الآلي',
-                    tagline5G: 'معًا من أجل مجتمع تربوي',
-                    tagline5G2: 'يتواكب مع تكنولوجيا',
-                    gen5: 'الجيل الخامس 5G',
-                    contactTitle: '📬 تواصل مع مدير الموقع',
-                    contactSubtitle: 'أدخل بريدك الإلكتروني لترك تعليق وليصلك كل جديد',
-                    emailPlaceholder: 'example@email.com',
-                    subscribeBtn: '📩 اشترك الآن',
-                    subscribeSuccess: '✅ تم تسجيل بريدك الإلكتروني بنجاح! شكرًا لتواصلك.',
-                    subscribeError: '⚠️ يرجى إدخال بريد إلكتروني صحيح.',
-                    footerText: 'حاسبة المعدلات للطور الثانوي الجزائري · الجزائر 🇩🇿',
-                    footerCredit: 'تطوير: أ. خليل زهير · ماستر رياضيات وإعلام آلي',
-                    coefLabel: 'المعامل',
-                    outOf: '/20',
+                    subject: 'المادة',
+                    coef: 'المعامل',
+                    continuous: 'التقويم المستمر /20',
+                    assignment: 'معدل الفرض /20',
+                    exam: 'الاختبار /20',
+                    subjAvg: 'معدل المادة',
+                    calculate: 'احسب المعدلات',
+                    reset: 'إعادة تعيين',
+                    print: 'طباعة',
+                    save: 'حفظ',
+                    annualAvg: 'المعدل السنوي',
                     successVerdict: '🎉 مبروك! أنت ناجح بمعدل ممتاز! وفقك الله.',
                     passVerdict: '✅ أنت ناجح. واصل العمل الجيد!',
-                    warningVerdict: '⚠️ أنت على حافة النجاح. راجع دروسك جيداً.',
-                    failVerdict: '❌ للأسف المعدل غير كافٍ. لا تيأس، ركز على نقاط ضعفك.',
-                    noData: 'لا توجد بيانات كافية',
-                    alreadySubscribed: '📋 هذا البريد مسجل مسبقًا. شكرًا!',
+                    remedialVerdict: '⚠️ معدلك بين 9 و10 (10 غير محسوبة). لديك فرصة في امتحان الاستدراك في شهر جوان. استعد جيدًا!',
+                    failVerdict: '❌ للأسف المعدل غير كافٍ. أنت راسب. لا تيأس، راجع دروسك وركز على نقاط ضعفك.',
+                    orientationTest: 'اختبار التوجيه الذكي',
+                    orientationDesc: 'للسنة أولى ثانوي لاكتشاف الشعبة المناسبة للسنة الثانية',
+                    orientationHint: 'أجب عن الأسئلة التالية بصدق لمساعدتك في اختيار شعبة السنة الثانية ثانوي.',
+                    discoverStream: 'اكتشف شعبتك المناسبة',
+                    subscribe: 'تواصل مع مدير الموقع',
+                    subscribeDesc: 'أدخل بريدك الإلكتروني لترك تعليق وليصلك كل جديد.',
+                    send: 'إرسال',
+                    devByFooter: 'من تطوير الأستاذ: خليل زهير',
+                    degree: 'ماستر في ميدان الرياضيات والإعلام الآلي',
+                    motto: 'معًا من أجل مجتمع تربوي يتواكب مع تكنولوجيا الجيل الخامس 5G',
+                    allRights: 'جميع الحقوق محفوظة',
+                    orientQ1: 'هل تستمتع بحل المسائل الرياضية المعقدة؟',
+                    orientQ2: 'هل تحب إجراء التجارب العلمية في المخبر؟',
+                    orientQ3: 'هل تفضل قراءة الكتب الأدبية وتحليل النصوص؟',
+                    orientQ4: 'هل أنت مهتم بتعلم اللغات الأجنبية والتواصل مع ثقافات أخرى؟',
+                    orientQ5: 'هل تستمتع بالعمل على الحاسوب والبرمجة؟',
+                    orientQ6: 'هل تحب متابعة الأخبار الاقتصادية وفهم أسواق المال؟',
+                    yes: 'نعم',
+                    no: 'لا',
+                    sometimes: 'أحيانًا',
+                    orientResult_Sci: '🔬 الشعبة المناسبة لك: علوم تجريبية',
+                    orientResult_Math: '📐 الشعبة المناسبة لك: رياضيات',
+                    orientResult_Tech: '⚙️ الشعبة المناسبة لك: تقني رياضي',
+                    orientResult_Lettres: '📖 الشعبة المناسبة لك: آداب وفلسفة',
+                    orientResult_Langues: '🌍 الشعبة المناسبة لك: لغات أجنبية',
+                    orientResult_Gestion: '💼 الشعبة المناسبة لك: تسيير واقتصاد',
+                    emailSuccess: '✅ تم تسجيل بريدك الإلكتروني بنجاح! شكرًا لك.',
+                    emailError: '⚠️ يرجى إدخال بريد إلكتروني صالح.',
                 },
                 en: {
                     appTitle: 'Semester Average Calculator',
-                    appSubtitle: 'Algerian Secondary School · All Streams',
-                    devBy: 'Dev: Prof. Khalil Zouhair',
-                    devDegree: 'Master in Mathematics & CS',
-                    selectStream: '📚 Select Stream:',
-                    stream_sci_exp: '🔬 Experimental Sciences',
-                    stream_math: '📐 Mathematics',
-                    stream_tech: '⚙️ Technical Mathematics',
-                    stream_lettres: '📖 Literature & Philosophy',
-                    stream_langues: '🌍 Foreign Languages',
-                    stream_gestion: '💼 Management & Economics',
+                    appSubtitle: 'Algerian Secondary School · All Levels & Streams',
+                    devBy: 'Developed by Prof. Khalil Zouhair',
+                    visitors: 'Site Visitors',
+                    studentInfo: 'Student Information',
+                    firstName: 'First Name',
+                    lastName: 'Last Name',
+                    firstNamePlaceholder: 'Enter first name',
+                    lastNamePlaceholder: 'Enter last name',
+                    level: 'Educational Level',
+                    level1: '1st Year (Common Core)',
+                    level2: '2nd Year',
+                    level3: '3rd Year',
+                    stream: 'Stream',
                     semester1: 'Semester 1',
                     semester2: 'Semester 2',
                     semester3: 'Semester 3',
-                    weightingInfo: '🧪 Calculation method per subject:',
-                    formulaDisplay: '(Continuous × 40%) + (Exam × 60%)',
-                    noProjectNote: '⛔ No project marks included',
                     enterGrades: 'Enter grades (0 to 20)',
-                    currentSemester: 'Semester 1',
-                    overallAverage: 'Overall Average',
-                    continuousLabel: 'Continuous Assessment',
-                    examLabel: 'Exam',
-                    subjectAvgLabel: 'Subject Avg',
-                    calculate: '🧮 Calculate',
-                    reset: '🔄 Reset',
-                    print: '🖨️ Print Results',
-                    save: '💾 Save Data',
-                    devFullCredit: '👨‍💻 Developed by Prof. Khalil Zouhair',
-                    devFullDegree: '🎓 Master in Mathematics & Computer Science',
-                    tagline5G: 'Together for an educational community',
-                    tagline5G2: 'keeping pace with',
-                    gen5: '5th Generation Technology 5G',
-                    contactTitle: '📬 Contact the Site Manager',
-                    contactSubtitle: 'Enter your email to leave a comment and receive updates',
-                    emailPlaceholder: 'example@email.com',
-                    subscribeBtn: '📩 Subscribe Now',
-                    subscribeSuccess: '✅ Your email has been registered! Thank you for reaching out.',
-                    subscribeError: '⚠️ Please enter a valid email address.',
-                    footerText: 'Algerian Secondary School Average Calculator · Algeria 🇩🇿',
-                    footerCredit: 'Dev: Prof. Khalil Zouhair · Master in Mathematics & CS',
-                    coefLabel: 'Coefficient',
-                    outOf: '/20',
-                    successVerdict: '🎉 Congratulations! Excellent average! Well done!',
+                    subject: 'Subject',
+                    coef: 'Coefficient',
+                    continuous: 'Continuous Assessment /20',
+                    assignment: 'Assignment Average /20',
+                    exam: 'Exam /20',
+                    subjAvg: 'Subject Average',
+                    calculate: 'Calculate',
+                    reset: 'Reset',
+                    print: 'Print',
+                    save: 'Save',
+                    annualAvg: 'Annual Average',
+                    successVerdict: '🎉 Congratulations! You passed with excellent average!',
                     passVerdict: '✅ You passed. Keep up the good work!',
-                    warningVerdict: '⚠️ You are borderline. Review your lessons carefully.',
-                    failVerdict: '❌ Unfortunately the average is insufficient. Don\'t give up.',
-                    noData: 'Insufficient data',
-                    alreadySubscribed: '📋 This email is already registered. Thanks!',
+                    remedialVerdict: '⚠️ Your average is between 9 and 10 (10 excluded). You have a remedial exam in June. Prepare well!',
+                    failVerdict: '❌ Unfortunately the average is insufficient. You failed. Don\'t give up!',
+                    orientationTest: 'Smart Orientation Test',
+                    orientationDesc: 'For 1st year students to discover the right 2nd year stream',
+                    orientationHint: 'Answer the following questions honestly to help choose your 2nd year stream.',
+                    discoverStream: 'Discover Your Stream',
+                    subscribe: 'Contact Site Manager',
+                    subscribeDesc: 'Enter your email to leave a comment and receive updates.',
+                    send: 'Send',
+                    devByFooter: 'Developed by Prof. Khalil Zouhair',
+                    degree: 'Master in Mathematics & Computer Science',
+                    motto: 'Together for an Educational Society Keeping Pace with 5G Technology',
+                    allRights: 'All Rights Reserved',
+                    orientQ1: 'Do you enjoy solving complex math problems?',
+                    orientQ2: 'Do you like conducting scientific experiments in the lab?',
+                    orientQ3: 'Do you prefer reading literary books and analyzing texts?',
+                    orientQ4: 'Are you interested in learning foreign languages?',
+                    orientQ5: 'Do you enjoy working on computers and programming?',
+                    orientQ6: 'Do you like following economic news and understanding markets?',
+                    yes: 'Yes',
+                    no: 'No',
+                    sometimes: 'Sometimes',
+                    orientResult_Sci: '🔬 Recommended Stream: Experimental Sciences',
+                    orientResult_Math: '📐 Recommended Stream: Mathematics',
+                    orientResult_Tech: '⚙️ Recommended Stream: Technical Mathematics',
+                    orientResult_Lettres: '📖 Recommended Stream: Literature & Philosophy',
+                    orientResult_Langues: '🌍 Recommended Stream: Foreign Languages',
+                    orientResult_Gestion: '💼 Recommended Stream: Management & Economics',
+                    emailSuccess: '✅ Email registered successfully! Thank you.',
+                    emailError: '⚠️ Please enter a valid email address.',
                 },
                 fr: {
-                    appTitle: 'Calculateur de Moyennes Semestrielles',
-                    appSubtitle: 'Lycée Algérien · Toutes les Filières',
-                    devBy: 'Dév: Pr. Khalil Zouhair',
-                    devDegree: 'Master Mathématiques & Informatique',
-                    selectStream: '📚 Choisir la filière :',
-                    stream_sci_exp: '🔬 Sciences Expérimentales',
-                    stream_math: '📐 Mathématiques',
-                    stream_tech: '⚙️ Technique Mathématiques',
-                    stream_lettres: '📖 Lettres & Philosophie',
-                    stream_langues: '🌍 Langues Étrangères',
-                    stream_gestion: '💼 Gestion & Économie',
+                    appTitle: 'Calculateur de Moyennes',
+                    appSubtitle: 'Lycée Algérien · Tous Niveaux & Filières',
+                    devBy: 'Développé par Prof. Khalil Zouhair',
+                    visitors: 'Visiteurs du site',
+                    studentInfo: 'Informations de l\'élève',
+                    firstName: 'Prénom',
+                    lastName: 'Nom',
+                    firstNamePlaceholder: 'Entrez le prénom',
+                    lastNamePlaceholder: 'Entrez le nom',
+                    level: 'Niveau',
+                    level1: '1ère Année (Tronc Commun)',
+                    level2: '2ème Année',
+                    level3: '3ème Année',
+                    stream: 'Filière',
                     semester1: 'Semestre 1',
                     semester2: 'Semestre 2',
                     semester3: 'Semestre 3',
-                    weightingInfo: '🧪 Méthode de calcul par matière :',
-                    formulaDisplay: '(Contrôle Continu × 40%) + (Examen × 60%)',
-                    noProjectNote: '⛔ Sans note de projet',
                     enterGrades: 'Entrez les notes (0 à 20)',
-                    currentSemester: 'Semestre 1',
-                    overallAverage: 'Moyenne Générale',
-                    continuousLabel: 'Contrôle Continu',
-                    examLabel: 'Examen',
-                    subjectAvgLabel: 'Moy. Matière',
-                    calculate: '🧮 Calculer',
-                    reset: '🔄 Réinitialiser',
-                    print: '🖨️ Imprimer',
-                    save: '💾 Sauvegarder',
-                    devFullCredit: '👨‍💻 Développé par Pr. Khalil Zouhair',
-                    devFullDegree: '🎓 Master en Mathématiques & Informatique',
-                    tagline5G: 'Ensemble pour une communauté éducative',
-                    tagline5G2: 'en phase avec la technologie',
-                    gen5: 'de 5ème Génération 5G',
-                    contactTitle: '📬 Contacter le Gestionnaire du Site',
-                    contactSubtitle: 'Entrez votre email pour laisser un commentaire et recevoir les nouveautés',
-                    emailPlaceholder: 'exemple@email.com',
-                    subscribeBtn: '📩 S\'abonner',
-                    subscribeSuccess: '✅ Votre email a été enregistré ! Merci de votre contact.',
-                    subscribeError: '⚠️ Veuillez entrer une adresse email valide.',
-                    footerText: 'Calculateur de Moyennes du Lycée Algérien · Algérie 🇩🇿',
-                    footerCredit: 'Dév: Pr. Khalil Zouhair · Master Mathématiques & Informatique',
-                    coefLabel: 'Coefficient',
-                    outOf: '/20',
-                    successVerdict: '🎉 Félicitations ! Excellente moyenne ! Bon travail !',
+                    subject: 'Matière',
+                    coef: 'Coefficient',
+                    continuous: 'Évaluation Continue /20',
+                    assignment: 'Moyenne Devoir /20',
+                    exam: 'Examen /20',
+                    subjAvg: 'Moyenne Matière',
+                    calculate: 'Calculer',
+                    reset: 'Réinitialiser',
+                    print: 'Imprimer',
+                    save: 'Sauvegarder',
+                    annualAvg: 'Moyenne Annuelle',
+                    successVerdict: '🎉 Félicitations ! Vous avez réussi avec une excellente moyenne !',
                     passVerdict: '✅ Vous avez réussi. Continuez votre bon travail !',
-                    warningVerdict: '⚠️ Vous êtes à la limite. Révisez bien vos leçons.',
-                    failVerdict: '❌ Malheureusement la moyenne est insuffisante. Ne baissez pas les bras.',
-                    noData: 'Données insuffisantes',
-                    alreadySubscribed: '📋 Cet email est déjà enregistré. Merci !',
+                    remedialVerdict: '⚠️ Votre moyenne est entre 9 et 10 (10 exclu). Vous avez un examen de rattrapage en juin. Préparez-vous bien !',
+                    failVerdict: '❌ Malheureusement la moyenne est insuffisante. Vous avez échoué. Ne baissez pas les bras !',
+                    orientationTest: 'Test d\'Orientation Intelligent',
+                    orientationDesc: 'Pour les 1ères années afin de découvrir la filière adaptée',
+                    orientationHint: 'Répondez honnêtement pour vous aider à choisir votre filière de 2ème année.',
+                    discoverStream: 'Découvrez votre filière',
+                    subscribe: 'Contacter le gestionnaire',
+                    subscribeDesc: 'Entrez votre email pour laisser un commentaire et recevoir les nouveautés.',
+                    send: 'Envoyer',
+                    devByFooter: 'Développé par Prof. Khalil Zouhair',
+                    degree: 'Master en Mathématiques & Informatique',
+                    motto: 'Ensemble pour une société éducative en phase avec la technologie 5G',
+                    allRights: 'Tous droits réservés',
+                    orientQ1: 'Aimez-vous résoudre des problèmes mathématiques complexes ?',
+                    orientQ2: 'Aimez-vous faire des expériences scientifiques en laboratoire ?',
+                    orientQ3: 'Préférez-vous lire des livres littéraires et analyser des textes ?',
+                    orientQ4: 'Êtes-vous intéressé par l\'apprentissage des langues étrangères ?',
+                    orientQ5: 'Aimez-vous travailler sur ordinateur et programmer ?',
+                    orientQ6: 'Aimez-vous suivre l\'actualité économique ?',
+                    yes: 'Oui',
+                    no: 'Non',
+                    sometimes: 'Parfois',
+                    orientResult_Sci: '🔬 Filière recommandée : Sciences Expérimentales',
+                    orientResult_Math: '📐 Filière recommandée : Mathématiques',
+                    orientResult_Tech: '⚙️ Filière recommandée : Technique Mathématiques',
+                    orientResult_Lettres: '📖 Filière recommandée : Lettres & Philosophie',
+                    orientResult_Langues: '🌍 Filière recommandée : Langues Étrangères',
+                    orientResult_Gestion: '💼 Filière recommandée : Gestion & Économie',
+                    emailSuccess: '✅ Email enregistré avec succès ! Merci.',
+                    emailError: '⚠️ Veuillez entrer une adresse email valide.',
                 },
                 zh: {
                     appTitle: '学期平均分计算器',
-                    appSubtitle: '阿尔及利亚高中 · 所有科类',
-                    devBy: '开发: Khalil Zouhair 教授',
-                    devDegree: '数学与计算机科学硕士',
-                    selectStream: '📚 选择科类：',
-                    stream_sci_exp: '🔬 实验科学',
-                    stream_math: '📐 数学',
-                    stream_tech: '⚙️ 技术数学',
-                    stream_lettres: '📖 文学与哲学',
-                    stream_langues: '🌍 外语',
-                    stream_gestion: '💼 管理与经济',
+                    appSubtitle: '阿尔及利亚高中 · 所有年级和科类',
+                    devBy: '由哈利勒·祖海尔教授开发',
+                    visitors: '网站访客',
+                    studentInfo: '学生信息',
+                    firstName: '名',
+                    lastName: '姓',
+                    firstNamePlaceholder: '输入名',
+                    lastNamePlaceholder: '输入姓',
+                    level: '教育水平',
+                    level1: '高一（公共核心）',
+                    level2: '高二',
+                    level3: '高三',
+                    stream: '科类',
                     semester1: '第一学期',
                     semester2: '第二学期',
                     semester3: '第三学期',
-                    weightingInfo: '🧪 每科计算方法：',
-                    formulaDisplay: '(平时成绩 × 40%) + (考试 × 60%)',
-                    noProjectNote: '⛔ 不含项目评分',
-                    enterGrades: '输入成绩（0到20分）',
-                    currentSemester: '第一学期',
-                    overallAverage: '总平均分',
-                    continuousLabel: '平时成绩',
-                    examLabel: '考试',
-                    subjectAvgLabel: '科目平均',
-                    calculate: '🧮 计算',
-                    reset: '🔄 重置',
-                    print: '🖨️ 打印结果',
-                    save: '💾 保存数据',
-                    devFullCredit: '👨‍💻 由 Khalil Zouhair 教授开发',
-                    devFullDegree: '🎓 数学与计算机科学硕士',
-                    tagline5G: '共同建设教育社区',
-                    tagline5G2: '紧跟',
-                    gen5: '第五代技术 5G',
-                    contactTitle: '📬 联系网站管理员',
-                    contactSubtitle: '输入您的电子邮件以留下评论并接收更新',
-                    emailPlaceholder: 'example@email.com',
-                    subscribeBtn: '📩 立即订阅',
-                    subscribeSuccess: '✅ 您的电子邮件已注册！感谢您的联系。',
-                    subscribeError: '⚠️ 请输入有效的电子邮件地址。',
-                    footerText: '阿尔及利亚高中平均分计算器 · 阿尔及利亚 🇩🇿',
-                    footerCredit: '开发: Khalil Zouhair 教授 · 数学与计算机科学硕士',
-                    coefLabel: '系数',
-                    outOf: '/20',
-                    successVerdict: '🎉 恭喜！平均分优秀！干得好！',
+                    enterGrades: '输入成绩（0到20）',
+                    subject: '科目',
+                    coef: '系数',
+                    continuous: '持续评估 /20',
+                    assignment: '作业平均分 /20',
+                    exam: '考试 /20',
+                    subjAvg: '科目平均分',
+                    calculate: '计算',
+                    reset: '重置',
+                    print: '打印',
+                    save: '保存',
+                    annualAvg: '年度平均分',
+                    successVerdict: '🎉 恭喜！你以优异成绩通过！',
                     passVerdict: '✅ 你通过了。继续保持！',
-                    warningVerdict: '⚠️ 你在及格线边缘。请认真复习功课。',
-                    failVerdict: '❌ 很遗憾平均分不足。不要放弃，专注薄弱环节。',
-                    noData: '数据不足',
-                    alreadySubscribed: '📋 该邮箱已注册。谢谢！',
+                    remedialVerdict: '⚠️ 你的平均分在9到10之间（不含10）。你可以在六月参加补考。好好准备！',
+                    failVerdict: '❌ 很遗憾平均分不足。你未通过。不要放弃！',
+                    orientationTest: '智能定向测试',
+                    orientationDesc: '为高一学生发现适合的高二科类',
+                    orientationHint: '诚实回答以下问题，帮助选择你的高二科类。',
+                    discoverStream: '发现你的科类',
+                    subscribe: '联系网站管理员',
+                    subscribeDesc: '输入你的邮箱以留下评论并接收更新。',
+                    send: '发送',
+                    devByFooter: '由哈利勒·祖海尔教授开发',
+                    degree: '数学与计算机科学硕士',
+                    motto: '共同打造与5G技术同步的教育社会',
+                    allRights: '版权所有',
+                    orientQ1: '你喜欢解决复杂的数学问题吗？',
+                    orientQ2: '你喜欢在实验室进行科学实验吗？',
+                    orientQ3: '你喜欢阅读文学书籍和分析文本吗？',
+                    orientQ4: '你对学习外语和与其他文化交流感兴趣吗？',
+                    orientQ5: '你喜欢计算机工作和编程吗？',
+                    orientQ6: '你喜欢关注经济新闻和了解市场吗？',
+                    yes: '是',
+                    no: '否',
+                    sometimes: '有时',
+                    orientResult_Sci: '🔬 推荐科类：实验科学',
+                    orientResult_Math: '📐 推荐科类：数学',
+                    orientResult_Tech: '⚙️ 推荐科类：技术数学',
+                    orientResult_Lettres: '📖 推荐科类：文学与哲学',
+                    orientResult_Langues: '🌍 推荐科类：外语',
+                    orientResult_Gestion: '💼 推荐科类：管理与经济',
+                    emailSuccess: '✅ 邮箱注册成功！谢谢。',
+                    emailError: '⚠️ 请输入有效的邮箱地址。',
                 }
             };
 
-            // ═══════════════ STATE ═══════════════
+            // ==================== STATE ====================
             let currentLang = 'ar';
+            let currentLevel = '2';
             let currentStream = 'sciences_experimentales';
             let currentSemester = 1;
-            // grades[subjectId][semester] = { continuous: number|null, exam: number|null }
+            // grades[subjectId][semester] = { continuous, assignment, exam }
             let grades = {};
-            let subscribedEmails = JSON.parse(localStorage.getItem('algCalcSubscribedEmails') || '[]');
 
-            // ═══════════════ DOM REFS ═══════════════
+            // ==================== DOM REFS ====================
+            const levelSelect = document.getElementById('levelSelect');
             const streamSelect = document.getElementById('streamSelect');
-            const semesterTabs = document.getElementById('semesterTabs');
-            const subjectsGrid = document.getElementById('subjectsGrid');
-            const btnCalculate = document.getElementById('btnCalculate');
-            const btnReset = document.getElementById('btnReset');
-            const btnPrint = document.getElementById('btnPrint');
-            const btnSave = document.getElementById('btnSave');
-            const verdictBanner = document.getElementById('verdictBanner');
+            const subjectsTableBody = document.getElementById('subjectsTableBody');
             const langSwitcher = document.getElementById('langSwitcher');
-            const contactEmail = document.getElementById('contactEmail');
-            const btnSubscribe = document.getElementById('btnSubscribe');
-            const subscribeMsg = document.getElementById('subscribeMsg');
-            const contactForm = document.getElementById('contactForm');
+            const verdictBanner = document.getElementById('verdictBanner');
+            const orientationSection = document.getElementById('orientationSection');
+            const visitorCountEl = document.getElementById('visitorCount');
 
-            // ═══════════════ FUNCTIONS ═══════════════
             function t(key) { return translations[currentLang][key] || key; }
 
-            function getSubjectName(subject, lang) {
-                const key = 'name_' + lang;
-                return subject[key] || subject.name_ar;
+            function getSubjName(subj, lang) { return subj['name_' + lang] || subj.name_ar; }
+
+            function getStreamName(streamKey, lang) {
+                const lvlData = levelStreams[currentLevel];
+                if (!lvlData || !lvlData[streamKey]) return streamKey;
+                return lvlData[streamKey]['name_' + lang] || lvlData[streamKey].name_ar;
+            }
+
+            function updateStreamOptions() {
+                const lvlData = levelStreams[currentLevel];
+                if (!lvlData) return;
+                streamSelect.innerHTML = '';
+                Object.keys(lvlData).forEach(key => {
+                    const opt = document.createElement('option');
+                    opt.value = key;
+                    opt.textContent = getStreamName(key, currentLang);
+                    streamSelect.appendChild(opt);
+                });
+                if (!lvlData[currentStream]) currentStream = Object.keys(lvlData)[0];
+                streamSelect.value = currentStream;
             }
 
             function getCurrentSubjects() {
-                const stream = streamsData[currentStream];
-                return stream ? stream.subjects : [];
+                const lvlData = levelStreams[currentLevel];
+                if (!lvlData || !lvlData[currentStream]) return [];
+                return lvlData[currentStream].subjects;
             }
 
-            // Calculate subject semester average: continuous*0.4 + exam*0.6
-            function calcSubjectSemesterAvg(subjectId, semester) {
-                const entry = grades[subjectId] && grades[subjectId][semester];
-                if (!entry) return null;
-                const c = entry.continuous;
-                const e = entry.exam;
-                if (c === null || c === undefined || isNaN(c)) return null;
-                if (e === null || e === undefined || isNaN(e)) return null;
-                return parseFloat((c * 0.4 + e * 0.6).toFixed(2));
+            function calcSubjectAverage(subjectId, semester) {
+                const g = grades[subjectId] && grades[subjectId][semester];
+                if (!g || g.continuous === null || g.assignment === null || g.exam === null || isNaN(g.continuous) ||
+                    isNaN(g.assignment) || isNaN(g.exam)) return null;
+                // Formula: (exam*2 + assignment + continuous) / 4
+                const avg = (g.exam * 2 + g.assignment + g.continuous) / 4;
+                return parseFloat(avg.toFixed(2));
             }
 
-            function calculateSemesterAverage(semester) {
+            function calcSemesterAverage(semester) {
                 const subjects = getCurrentSubjects();
-                let totalWeighted = 0;
-                let totalCoef = 0;
-                subjects.forEach(subject => {
-                    const subAvg = calcSubjectSemesterAvg(subject.id, semester);
-                    if (subAvg !== null) {
-                        totalWeighted += subAvg * subject.coef;
-                        totalCoef += subject.coef;
-                    }
+                let totalWeighted = 0,
+                    totalCoef = 0;
+                subjects.forEach(s => {
+                    const subjAvg = calcSubjectAverage(s.id, semester);
+                    if (subjAvg !== null) { totalWeighted += subjAvg * s.coef;
+                        totalCoef += s.coef; }
                 });
-                if (totalCoef === 0) return null;
-                return parseFloat((totalWeighted / totalCoef).toFixed(2));
+                return totalCoef > 0 ? parseFloat((totalWeighted / totalCoef).toFixed(2)) : null;
             }
 
-            function calculateOverallAverage() {
-                const avgs = [calculateSemesterAverage(1), calculateSemesterAverage(2), calculateSemesterAverage(3)]
-                    .filter(a => a !== null);
-                if (avgs.length === 0) return null;
-                return parseFloat((avgs.reduce((s, a) => s + a, 0) / avgs.length).toFixed(2));
-            }
-
-            function getAverageClass(avg) {
-                if (avg === null || avg === undefined) return 'neutral';
-                if (avg >= 10) return 'pass';
-                if (avg >= 7) return 'neutral';
-                return 'fail';
-            }
-
-            function getSubAvgClass(avg) {
-                if (avg === null || avg === undefined) return 'neutral';
-                if (avg >= 10) return '';
-                if (avg >= 7) return 'warning';
-                return 'fail';
+            function calcAnnualAverage() {
+                const a1 = calcSemesterAverage(1),
+                    a2 = calcSemesterAverage(2),
+                    a3 = calcSemesterAverage(3);
+                const arr = [a1, a2, a3].filter(a => a !== null);
+                return arr.length > 0 ? parseFloat((arr.reduce((s, v) => s + v, 0) / arr.length).toFixed(2)) : null;
             }
 
             function updateAllAverages() {
                 for (let sem = 1; sem <= 3; sem++) {
-                    const avg = calculateSemesterAverage(sem);
-                    const displayEl = document.getElementById('avg' + sem);
-                    const tabAvgEl = document.getElementById('tabAvg' + sem);
-                    if (displayEl) {
-                        displayEl.textContent = avg !== null ? avg.toFixed(2) : '—';
-                        displayEl.className = 'result-value ' + getAverageClass(avg);
-                    }
-                    if (tabAvgEl) {
-                        tabAvgEl.textContent = avg !== null ? '∑ ' + avg.toFixed(2) : '—';
-                    }
-                    const card = document.getElementById('resultCard' + sem);
-                    if (card) {
-                        card.style.borderColor = avg !== null ? (avg >= 10 ? '#4CAF50' : avg >= 7 ? '#ffc107' :
-                            '#ef5350') : 'transparent';
-                    }
+                    const avg = calcSemesterAverage(sem);
+                    const el = document.getElementById('avg' + sem);
+                    const tabEl = document.getElementById('tabAvg' + sem);
+                    if (el) { el.textContent = avg !== null ? avg.toFixed(2) : '—';
+                        el.className = 'result-value ' + (avg !== null ? (avg >= 10 ? 'pass' : avg >= 7 ? 'warn' :
+                            'fail') : ''); }
+                    if (tabEl) tabEl.textContent = avg !== null ? '∑ ' + avg.toFixed(2) : '—';
                 }
-                const overall = calculateOverallAverage();
-                const overallEl = document.getElementById('avgOverall');
-                if (overallEl) {
-                    overallEl.textContent = overall !== null ? overall.toFixed(2) : '—';
-                    overallEl.className = 'result-value ' + getAverageClass(overall);
-                }
-                updateVerdictDisplay();
-                // Update all subject mini-results in the current view
-                updateSubjectMiniResults();
+                const annual = calcAnnualAverage();
+                const annualEl = document.getElementById('avgAnnual');
+                if (annualEl) { annualEl.textContent = annual !== null ? annual.toFixed(2) : '—';
+                    annualEl.className = 'result-value ' + (annual !== null ? (annual >= 10 ? 'pass' : annual >= 9 ?
+                        'warn' : 'fail') : ''); }
+                updateVerdict();
+                // Also update subject averages in table
+                updateSubjectAvgCells();
             }
 
-            function updateSubjectMiniResults() {
-                document.querySelectorAll('.subject-result-mini').forEach(el => {
-                    const subjectId = el.getAttribute('data-subject-id');
-                    const sem = parseInt(el.getAttribute('data-semester'));
-                    const subAvg = calcSubjectSemesterAvg(subjectId, sem);
-                    if (subAvg !== null) {
-                        el.textContent = t('subjectAvgLabel') + ': ' + subAvg.toFixed(2) + ' ' + t('outOf');
-                        el.className = 'subject-result-mini ' + getSubAvgClass(subAvg);
-                    } else {
-                        el.textContent = t('subjectAvgLabel') + ': —';
-                        el.className = 'subject-result-mini neutral';
+            function updateSubjectAvgCells() {
+                const rows = subjectsTableBody.querySelectorAll('tr');
+                rows.forEach(row => {
+                    const subjectId = row.getAttribute('data-subject-id');
+                    const avgCell = row.querySelector('.avg-cell');
+                    if (avgCell && subjectId) {
+                        const avg = calcSubjectAverage(subjectId, currentSemester);
+                        avgCell.textContent = avg !== null ? avg.toFixed(2) : '—';
+                        avgCell.style.color = avg !== null ? (avg >= 10 ? '#006233' : '#D21034') : '#999';
                     }
                 });
             }
 
-            function updateVerdictDisplay() {
-                const overall = calculateOverallAverage();
-                if (overall === null) {
-                    verdictBanner.style.display = 'none';
-                    verdictBanner.className = 'verdict-banner';
-                    return;
-                }
+            function updateVerdict() {
+                const annual = calcAnnualAverage();
+                if (annual === null) { verdictBanner.style.display = 'none';
+                    verdictBanner.className = 'verdict-banner'; return; }
                 verdictBanner.style.display = 'block';
-                if (overall >= 16) {
+                if (annual >= 10) {
                     verdictBanner.className = 'verdict-banner success';
-                    verdictBanner.textContent = t('successVerdict');
-                } else if (overall >= 10) {
-                    verdictBanner.className = 'verdict-banner success';
-                    verdictBanner.textContent = t('passVerdict');
-                } else if (overall >= 7) {
-                    verdictBanner.className = 'verdict-banner warning-verdict';
-                    verdictBanner.textContent = t('warningVerdict');
+                    verdictBanner.textContent = annual >= 16 ? t('successVerdict') : t('passVerdict');
+                } else if (annual >= 9 && annual < 10) {
+                    verdictBanner.className = 'verdict-banner remedial';
+                    verdictBanner.textContent = t('remedialVerdict');
                 } else {
                     verdictBanner.className = 'verdict-banner failure';
                     verdictBanner.textContent = t('failVerdict');
                 }
             }
 
-            function renderSubjects() {
+            function renderSubjectsTable() {
                 const subjects = getCurrentSubjects();
-                subjectsGrid.innerHTML = '';
-                subjects.forEach(subject => {
-                    const entry = grades[subject.id] && grades[subject.id][currentSemester];
-                    const cVal = (entry && entry.continuous !== null && entry.continuous !== undefined) ? entry
-                        .continuous : '';
-                    const eVal = (entry && entry.exam !== null && entry.exam !== undefined) ? entry.exam : '';
-                    const subAvg = calcSubjectSemesterAvg(subject.id, currentSemester);
-
-                    const card = document.createElement('div');
-                    card.className = 'subject-card';
-                    card.innerHTML = `
-                        <div class="subject-header">
-                            <span class="subject-name">${getSubjectName(subject, currentLang)}</span>
-                            <span class="subject-coef-badge">${t('coefLabel')}: ${subject.coef}</span>
-                        </div>
-                        <div class="subject-inputs">
-                            <div class="input-group">
-                                <label data-i18n="continuousLabel">${t('continuousLabel')} <small>(40%)</small></label>
-                                <input type="number" class="subject-input-continuous${cVal !== '' ? ' filled' : ''}"
-                                       data-subject-id="${subject.id}"
-                                       data-semester="${currentSemester}"
-                                       data-type="continuous"
-                                       value="${cVal}"
-                                       min="0" max="20" step="0.01"
-                                       placeholder="${t('continuousLabel')}"
-                                       lang="en" inputmode="decimal">
-                            </div>
-                            <div class="input-group">
-                                <label data-i18n="examLabel">${t('examLabel')} <small>(60%)</small></label>
-                                <input type="number" class="subject-input-exam${eVal !== '' ? ' filled' : ''}"
-                                       data-subject-id="${subject.id}"
-                                       data-semester="${currentSemester}"
-                                       data-type="exam"
-                                       value="${eVal}"
-                                       min="0" max="20" step="0.01"
-                                       placeholder="${t('examLabel')}"
-                                       lang="en" inputmode="decimal">
-                            </div>
-                        </div>
-                        <div class="subject-result-mini${getSubAvgClass(subAvg)}" data-subject-id="${subject.id}" data-semester="${currentSemester}">
-                            ${subAvg !== null ? t('subjectAvgLabel') + ': ' + subAvg.toFixed(2) + ' ' + t('outOf') : t('subjectAvgLabel') + ': —'}
-                        </div>
+                subjectsTableBody.innerHTML = '';
+                subjects.forEach(subj => {
+                    const g = grades[subj.id] && grades[subj.id][currentSemester] ? grades[subj.id][
+                        currentSemester
+                    ] : { continuous: '', assignment: '', exam: '' };
+                    const avg = calcSubjectAverage(subj.id, currentSemester);
+                    const tr = document.createElement('tr');
+                    tr.setAttribute('data-subject-id', subj.id);
+                    tr.innerHTML = `
+                        <td class="subj-name">${getSubjName(subj, currentLang)}</td>
+                        <td><span class="coef-badge">${subj.coef}</span></td>
+                        <td><input type="number" class="grade-input" data-subj="${subj.id}" data-type="continuous" value="${g.continuous}" min="0" max="20" step="0.01" lang="en"></td>
+                        <td><input type="number" class="grade-input" data-subj="${subj.id}" data-type="assignment" value="${g.assignment}" min="0" max="20" step="0.01" lang="en"></td>
+                        <td><input type="number" class="grade-input" data-subj="${subj.id}" data-type="exam" value="${g.exam}" min="0" max="20" step="0.01" lang="en"></td>
+                        <td class="avg-cell">${avg !== null ? avg.toFixed(2) : '—'}</td>
                     `;
-                    subjectsGrid.appendChild(card);
+                    subjectsTableBody.appendChild(tr);
                 });
-
                 // Attach listeners
-                subjectsGrid.querySelectorAll('.subject-input-continuous, .subject-input-exam').forEach(input => {
-                    input.addEventListener('input', handleGradeInput);
-                    input.addEventListener('blur', handleGradeBlur);
+                subjectsTableBody.querySelectorAll('.grade-input').forEach(inp => {
+                    inp.addEventListener('input', handleGradeInput);
+                    inp.addEventListener('blur', handleGradeBlur);
                 });
             }
 
             function handleGradeInput(e) {
-                const input = e.target;
-                const subjectId = input.getAttribute('data-subject-id');
-                const semester = parseInt(input.getAttribute('data-semester'));
-                const type = input.getAttribute('data-type'); // 'continuous' or 'exam'
-                let val = parseFloat(input.value);
-
-                if (isNaN(val) || input.value.trim() === '') {
-                    if (!grades[subjectId]) grades[subjectId] = {};
-                    if (!grades[subjectId][semester]) grades[subjectId][semester] = { continuous: null, exam: null };
-                    grades[subjectId][semester][type] = null;
-                    input.classList.remove('filled');
-                } else {
-                    if (val < 0) val = 0;
-                    if (val > 20) val = 20;
-                    input.value = val;
-                    if (!grades[subjectId]) grades[subjectId] = {};
-                    if (!grades[subjectId][semester]) grades[subjectId][semester] = { continuous: null, exam: null };
-                    grades[subjectId][semester][type] = val;
-                    input.classList.add('filled');
+                const inp = e.target;
+                const subjId = inp.getAttribute('data-subj');
+                const type = inp.getAttribute('data-type');
+                let val = parseFloat(inp.value);
+                if (isNaN(val) || inp.value.trim() === '') {
+                    if (!grades[subjId]) grades[subjId] = {};
+                    if (!grades[subjId][currentSemester]) grades[subjId][currentSemester] = { continuous: null,
+                        assignment: null, exam: null };
+                    grades[subjId][currentSemester][type] = null;
+                    updateAllAverages();
+                    return;
                 }
+                val = Math.max(0, Math.min(20, val));
+                inp.value = val;
+                if (!grades[subjId]) grades[subjId] = {};
+                if (!grades[subjId][currentSemester]) grades[subjId][currentSemester] = { continuous: null,
+                    assignment: null, exam: null };
+                grades[subjId][currentSemester][type] = val;
                 updateAllAverages();
             }
 
             function handleGradeBlur(e) {
-                const input = e.target;
-                const val = parseFloat(input.value);
-                if (isNaN(val) || input.value.trim() === '') {
-                    input.value = '';
-                    input.classList.remove('filled');
+                const inp = e.target;
+                if (inp.value.trim() === '') {
+                    const subjId = inp.getAttribute('data-subj');
+                    const type = inp.getAttribute('data-type');
+                    if (grades[subjId] && grades[subjId][currentSemester]) grades[subjId][currentSemester][type] = null;
+                    updateAllAverages();
                 }
             }
 
-            function resetAllGrades() {
+            function resetAll() {
                 grades = {};
-                document.querySelectorAll('.subject-input-continuous, .subject-input-exam').forEach(input => {
-                    input.value = '';
-                    input.classList.remove('filled');
-                });
+                document.getElementById('firstName').value = '';
+                document.getElementById('lastName').value = '';
+                renderSubjectsTable();
                 for (let sem = 1; sem <= 3; sem++) {
-                    const displayEl = document.getElementById('avg' + sem);
-                    const tabAvgEl = document.getElementById('tabAvg' + sem);
-                    if (displayEl) { displayEl.textContent = '—';
-                        displayEl.className = 'result-value neutral'; }
-                    if (tabAvgEl) tabAvgEl.textContent = '—';
-                    const card = document.getElementById('resultCard' + sem);
-                    if (card) card.style.borderColor = 'transparent';
+                    document.getElementById('avg' + sem).textContent = '—';
+                    document.getElementById('avg' + sem).className = 'result-value';
+                    document.getElementById('tabAvg' + sem).textContent = '—';
                 }
-                const overallEl = document.getElementById('avgOverall');
-                if (overallEl) { overallEl.textContent = '—';
-                    overallEl.className = 'result-value neutral'; }
+                document.getElementById('avgAnnual').textContent = '—';
+                document.getElementById('avgAnnual').className = 'result-value';
                 verdictBanner.style.display = 'none';
                 verdictBanner.className = 'verdict-banner';
-                localStorage.removeItem('algerianCalculatorDataV2');
-                renderSubjects();
+                document.getElementById('orientationResult').style.display = 'none';
+                localStorage.removeItem('algerianCalcDataV2');
             }
 
-            function saveToLocalStorage() {
-                const data = { stream: currentStream, grades, lang: currentLang, semester: currentSemester };
-                localStorage.setItem('algerianCalculatorDataV2', JSON.stringify(data));
-                const saveBtn = document.getElementById('btnSave');
-                const origHTML = saveBtn.innerHTML;
-                saveBtn.innerHTML = '✅ ' + (currentLang === 'ar' ? 'تم الحفظ' : currentLang === 'fr' ? 'Sauvegardé' :
-                    currentLang === 'zh' ? '已保存' : 'Saved!');
-                saveBtn.style.background = '#4CAF50';
-                saveBtn.style.color = '#fff';
-                setTimeout(() => {
-                    saveBtn.innerHTML = origHTML;
-                    saveBtn.style.background = '';
-                    saveBtn.style.color = '';
-                }, 1800);
+            function saveData() {
+                const data = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    level: currentLevel,
+                    stream: currentStream,
+                    semester: currentSemester,
+                    lang: currentLang,
+                    grades: grades,
+                };
+                localStorage.setItem('algerianCalcDataV2', JSON.stringify(data));
+                const btn = document.getElementById('btnSave');
+                const orig = btn.textContent;
+                btn.textContent = '✅ ' + (currentLang === 'ar' ? 'تم!' : currentLang === 'fr' ? 'OK!' : currentLang ===
+                    'zh' ? '已保存!' : 'Saved!');
+                btn.style.background = '#4CAF50';
+                btn.style.color = '#fff';
+                setTimeout(() => { btn.textContent = orig;
+                    btn.style.background = '';
+                    btn.style.color = ''; }, 1800);
             }
 
-            function loadFromLocalStorage() {
-                const raw = localStorage.getItem('algerianCalculatorDataV2');
+            function loadData() {
+                const raw = localStorage.getItem('algerianCalcDataV2');
                 if (!raw) return false;
                 try {
-                    const data = JSON.parse(raw);
-                    if (data.stream && streamsData[data.stream]) currentStream = data.stream;
-                    if (data.grades) grades = data.grades;
-                    if (data.lang && translations[data.lang]) { currentLang = data.lang;
-                        updateLangButtons();
-                        updateAllTranslations(); }
-                    if (data.semester && [1, 2, 3].includes(data.semester)) currentSemester = data.semester;
+                    const d = JSON.parse(raw);
+                    if (d.firstName) document.getElementById('firstName').value = d.firstName;
+                    if (d.lastName) document.getElementById('lastName').value = d.lastName;
+                    if (d.level && levelStreams[d.level]) { currentLevel = d.level;
+                        levelSelect.value = currentLevel;
+                        updateStreamOptions(); }
+                    if (d.stream) { currentStream = d.stream;
+                        streamSelect.value = currentStream; }
+                    if (d.semester && [1, 2, 3].includes(d.semester)) currentSemester = d.semester;
+                    if (d.lang && translations[d.lang]) { currentLang = d.lang;
+                        updateLangButtons(); }
+                    if (d.grades) grades = d.grades;
+                    updateAllTranslations();
+                    updateStreamOptions();
                     streamSelect.value = currentStream;
                     updateSemesterTabUI();
-                    renderSubjects();
+                    renderSubjectsTable();
                     updateAllAverages();
+                    updateOrientationVisibility();
                     return true;
                 } catch (e) { return false; }
             }
 
             function updateLangButtons() {
-                langSwitcher.querySelectorAll('.lang-btn').forEach(btn => {
-                    btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
-                });
+                langSwitcher.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.getAttribute(
+                    'data-lang') === currentLang));
                 document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
                 document.documentElement.lang = currentLang;
             }
@@ -1702,145 +1552,234 @@
                     const key = el.getAttribute('data-i18n');
                     if (translations[currentLang][key]) el.textContent = translations[currentLang][key];
                 });
-                // Update placeholders
                 document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
                     const key = el.getAttribute('data-i18n-placeholder');
                     if (translations[currentLang][key]) el.placeholder = translations[currentLang][key];
                 });
-                // Stream options
-                streamSelect.querySelectorAll('option').forEach(opt => {
-                    const key = opt.getAttribute('data-i18n');
-                    if (key && translations[currentLang][key]) opt.textContent = translations[currentLang][key];
-                });
-                updateSemesterTabLabels();
-                updateResultsLabels();
-                renderSubjects();
+                updateStreamOptions();
+                streamSelect.value = currentStream;
+                document.getElementById('currentSemLabel').textContent = t('semester' + currentSemester);
+                updateOrientationVisibility();
+                renderSubjectsTable();
                 updateAllAverages();
-                document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-                document.documentElement.lang = currentLang;
-            }
-
-            function updateSemesterTabLabels() {
-                semesterTabs.querySelectorAll('.semester-tab').forEach(tab => {
-                    const sem = parseInt(tab.getAttribute('data-semester'));
-                    const spanEl = tab.querySelector('span[data-i18n]');
-                    if (spanEl) spanEl.textContent = t('semester' + sem);
-                });
-            }
-
-            function updateResultsLabels() {
-                document.querySelectorAll('.results-panel .result-label span[data-i18n]').forEach(el => {
-                    const key = el.getAttribute('data-i18n');
-                    if (translations[currentLang][key]) el.textContent = translations[currentLang][key];
-                });
+                renderOrientationQuestions();
+                updateTicker();
             }
 
             function updateSemesterTabUI() {
-                semesterTabs.querySelectorAll('.semester-tab').forEach(tab => {
-                    const sem = parseInt(tab.getAttribute('data-semester'));
-                    tab.classList.toggle('active', sem === currentSemester);
+                document.querySelectorAll('.semester-tab').forEach(tab => {
+                    tab.classList.toggle('active', parseInt(tab.getAttribute('data-semester')) ===
+                        currentSemester);
                 });
-                const labelEl = document.querySelector('.subjects-card h3 span[data-i18n="currentSemester"]');
-                if (labelEl) labelEl.textContent = t('semester' + currentSemester);
+                document.getElementById('currentSemLabel').textContent = t('semester' + currentSemester);
             }
 
-            function printResults() { window.print(); }
-
-            function handleSubscribe() {
-                const email = contactEmail.value.trim();
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!email || !emailRegex.test(email)) {
-                    subscribeMsg.textContent = t('subscribeError');
-                    subscribeMsg.className = 'subscribe-msg error';
-                    return;
-                }
-                if (subscribedEmails.includes(email)) {
-                    subscribeMsg.textContent = t('alreadySubscribed');
-                    subscribeMsg.className = 'subscribe-msg success';
+            function updateOrientationVisibility() {
+                if (currentLevel === '1') {
+                    orientationSection.style.display = 'block';
+                    renderOrientationQuestions();
                 } else {
-                    subscribedEmails.push(email);
-                    localStorage.setItem('algCalcSubscribedEmails', JSON.stringify(subscribedEmails));
-                    subscribeMsg.textContent = t('subscribeSuccess');
-                    subscribeMsg.className = 'subscribe-msg success';
-                    contactEmail.value = '';
+                    orientationSection.style.display = 'none';
                 }
-                setTimeout(() => { subscribeMsg.textContent = '';
-                    subscribeMsg.className = 'subscribe-msg'; }, 4000);
             }
 
-            // ═══════════════ EVENT LISTENERS ═══════════════
+            // ==================== ORIENTATION TEST ====================
+            const orientationQuestions = [
+                { id: 'q1', key: 'orientQ1', weight_sci: 3, weight_math: 4, weight_tech: 3, weight_lettres: -2,
+                    weight_langues: -1, weight_gestion: 1 },
+                { id: 'q2', key: 'orientQ2', weight_sci: 4, weight_math: 2, weight_tech: 3, weight_lettres: -2,
+                    weight_langues: -1, weight_gestion: 0 },
+                { id: 'q3', key: 'orientQ3', weight_sci: -2, weight_math: -1, weight_tech: -2, weight_lettres: 4,
+                    weight_langues: 3, weight_gestion: 1 },
+                { id: 'q4', key: 'orientQ4', weight_sci: 0, weight_math: 0, weight_tech: 0, weight_lettres: 2,
+                    weight_langues: 5, weight_gestion: 1 },
+                { id: 'q5', key: 'orientQ5', weight_sci: 2, weight_math: 3, weight_tech: 4, weight_lettres: -1,
+                    weight_langues: 0, weight_gestion: 2 },
+                { id: 'q6', key: 'orientQ6', weight_sci: 0, weight_math: 1, weight_tech: 1, weight_lettres: 0,
+                    weight_langues: 0, weight_gestion: 5 },
+            ];
+
+            function renderOrientationQuestions() {
+                const container = document.getElementById('orientationQuestions');
+                if (!container) return;
+                container.innerHTML = '';
+                orientationQuestions.forEach((q, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'test-q';
+                    div.innerHTML = `
+                        <p>${i+1}. ${t(q.key)}</p>
+                        <label><input type="radio" name="orient_${q.id}" value="2"> ${t('yes')}</label>
+                        <label><input type="radio" name="orient_${q.id}" value="1"> ${t('sometimes')}</label>
+                        <label><input type="radio" name="orient_${q.id}" value="0" checked> ${t('no')}</label>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            function runOrientationTest() {
+                const scores = { sci: 0, math: 0, tech: 0, lettres: 0, langues: 0, gestion: 0 };
+                orientationQuestions.forEach(q => {
+                    const selected = document.querySelector(`input[name="orient_${q.id}"]:checked`);
+                    const val = selected ? parseInt(selected.value) : 0;
+                    scores.sci += val * q.weight_sci;
+                    scores.math += val * q.weight_math;
+                    scores.tech += val * q.weight_tech;
+                    scores.lettres += val * q.weight_lettres;
+                    scores.langues += val * q.weight_langues;
+                    scores.gestion += val * q.weight_gestion;
+                });
+                let best = 'sci',
+                    bestScore = scores.sci;
+                Object.keys(scores).forEach(k => { if (scores[k] > bestScore) { bestScore = scores[k];
+                        best = k; } });
+                const resultMap = { sci: 'orientResult_Sci', math: 'orientResult_Math', tech: 'orientResult_Tech',
+                    lettres: 'orientResult_Lettres', langues: 'orientResult_Langues', gestion: 'orientResult_Gestion' };
+                const resultDiv = document.getElementById('orientationResult');
+                resultDiv.style.display = 'block';
+                resultDiv.style.background = '#fffef5';
+                resultDiv.style.border = '2px solid #C9A84C';
+                resultDiv.textContent = t(resultMap[best]);
+                resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // ==================== VISITOR COUNTER ====================
+            function updateVisitorCounter() {
+                let total = parseInt(localStorage.getItem('visitorTotalV2') || '0');
+                if (!sessionStorage.getItem('visitedV2')) {
+                    total++;
+                    localStorage.setItem('visitorTotalV2', total);
+                    sessionStorage.setItem('visitedV2', '1');
+                }
+                visitorCountEl.textContent = total;
+            }
+
+            // ==================== TICKER ====================
+            function updateTicker() {
+                const tickerContent = document.getElementById('tickerContent');
+                const phrasesAr = ['🌟 اطلبوا العلم من المهد إلى اللحد 🌟', '📚 العلم نور والجهل ظلام 📚',
+                    '💪 بالجد والمثابرة تبلغ المراتب العليا 💪', '🏆 النجاح يبدأ بخطوة... فلتكن خطوتك اليوم 🏆',
+                    '🧠 العقل السليم في الجسم السليم 🧠', '🌙 وَقُل رَّبِّ زِدْنِي عِلْمًا 🌙',
+                    '🔬 الجزائر تزدهر بعلمائها وشبابها 🔬', '⭐ لا تنتظر الفرصة... بل اصنعها بنفسك ⭐'
+                ];
+                const phrasesEn = ['🌟 Seek knowledge from cradle to grave 🌟', '📚 Knowledge is light 📚',
+                    '💪 With hard work you reach the top 💪', '🏆 Success starts with one step 🏆',
+                    '🧠 A sound mind in a sound body 🧠', '🌙 My Lord, increase me in knowledge 🌙',
+                    '🔬 Algeria prospers with its scientists 🔬', '⭐ Don\'t wait for opportunity, create it ⭐'
+                ];
+                const phrasesFr = ['🌟 Cherchez le savoir du berceau au tombeau 🌟',
+                    '📚 La science est lumière 📚', '💪 Avec persévérance on atteint les sommets 💪',
+                    '🏆 Le succès commence par un pas 🏆', '🧠 Un esprit sain dans un corps sain 🧠',
+                    '🌙 Seigneur, accorde-moi plus de savoir 🌙', '🔬 L\'Algérie prospère avec ses savants 🔬',
+                    '⭐ Ne attendez pas l\'opportunité, créez-la ⭐'
+                ];
+                const phrasesZh = ['🌟 求知从摇篮到坟墓 🌟', '📚 知识是光明 📚', '💪 勤奋努力达顶峰 💪', '🏆 成功始于一步 🏆',
+                    '🧠 健康心灵寓于健康身体 🧠', '🌙 主啊，请增加我的知识 🌙', '🔬 阿尔及利亚因科学家而繁荣 🔬', '⭐ 不要等待机会，创造机会 ⭐'
+                ];
+                let phrases = phrasesAr;
+                if (currentLang === 'en') phrases = phrasesEn;
+                if (currentLang === 'fr') phrases = phrasesFr;
+                if (currentLang === 'zh') phrases = phrasesZh;
+                const doubled = [...phrases, ...phrases];
+                tickerContent.innerHTML = doubled.map(p => `<span>${p}</span>`).join('');
+            }
+
+            // ==================== EVENT HANDLERS ====================
+            levelSelect.addEventListener('change', function() {
+                currentLevel = this.value;
+                updateStreamOptions();
+                currentStream = streamSelect.value;
+                grades = {};
+                renderSubjectsTable();
+                updateAllAverages();
+                updateOrientationVisibility();
+            });
             streamSelect.addEventListener('change', function() {
                 currentStream = this.value;
-                renderSubjects();
+                grades = {};
+                renderSubjectsTable();
                 updateAllAverages();
             });
-
-            semesterTabs.addEventListener('click', function(e) {
+            document.getElementById('semesterTabs').addEventListener('click', function(e) {
                 const tab = e.target.closest('.semester-tab');
                 if (!tab) return;
                 currentSemester = parseInt(tab.getAttribute('data-semester'));
                 updateSemesterTabUI();
-                renderSubjects();
+                renderSubjectsTable();
                 updateAllAverages();
             });
-
             langSwitcher.addEventListener('click', function(e) {
                 const btn = e.target.closest('.lang-btn');
                 if (!btn) return;
                 currentLang = btn.getAttribute('data-lang');
                 updateLangButtons();
                 updateAllTranslations();
+                updateStreamOptions();
+                streamSelect.value = currentStream;
                 updateSemesterTabUI();
-            });
-
-            btnCalculate.addEventListener('click', function() {
+                renderSubjectsTable();
                 updateAllAverages();
-                const overallEl = document.getElementById('avgOverall');
-                if (overallEl) {
-                    overallEl.style.transform = 'scale(1.15)';
-                    overallEl.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                    setTimeout(() => { overallEl.style.transform = 'scale(1)'; }, 350);
-                }
+                updateOrientationVisibility();
+                updateTicker();
+            });
+            document.getElementById('btnCalculate').addEventListener('click', function() {
+                updateAllAverages();
+                const el = document.getElementById('avgAnnual');
+                el.style.transform = 'scale(1.2)';
+                el.style.transition = 'transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                setTimeout(() => el.style.transform = 'scale(1)', 350);
                 document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
-
-            btnReset.addEventListener('click', function() {
-                const confirmMsg = currentLang === 'ar' ? 'هل أنت متأكد من إعادة تعيين جميع البيانات؟' :
-                    currentLang === 'fr' ? 'Êtes-vous sûr de vouloir tout réinitialiser ?' :
-                    currentLang === 'zh' ? '确定要重置所有数据吗？' :
-                    'Are you sure you want to reset all data?';
-                if (confirm(confirmMsg)) resetAllGrades();
+            document.getElementById('btnReset').addEventListener('click', function() {
+                if (confirm(currentLang === 'ar' ? 'هل أنت متأكد من إعادة تعيين جميع البيانات؟' : currentLang === 'fr' ?
+                        'Réinitialiser toutes les données ?' : currentLang === 'zh' ? '确定重置所有数据？' :
+                        'Reset all data?')) resetAll();
+            });
+            document.getElementById('btnPrint').addEventListener('click', () => window.print());
+            document.getElementById('btnSave').addEventListener('click', saveData);
+            document.getElementById('btnOrientation').addEventListener('click', runOrientationTest);
+            document.getElementById('btnSubscribe').addEventListener('click', function() {
+                const email = document.getElementById('emailInput').value.trim();
+                const msgEl = document.getElementById('subscribeMsg');
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    const subs = JSON.parse(localStorage.getItem('subscribersV2') || '[]');
+                    if (!subs.includes(email)) { subs.push(email);
+                        localStorage.setItem('subscribersV2', JSON.stringify(subs)); }
+                    msgEl.textContent = t('emailSuccess');
+                    msgEl.style.color = '#4CAF50';
+                    document.getElementById('emailInput').value = '';
+                } else { msgEl.textContent = t('emailError');
+                    msgEl.style.color = '#D21034'; }
+                setTimeout(() => msgEl.textContent = '', 3000);
             });
 
-            btnPrint.addEventListener('click', printResults);
-            btnSave.addEventListener('click', saveToLocalStorage);
-            btnSubscribe.addEventListener('click', handleSubscribe);
-            contactForm.addEventListener('submit', function(e) { e.preventDefault();
-                handleSubscribe(); });
-
-            // ═══════════════ INITIALIZATION ═══════════════
+            // ==================== INIT ====================
             function init() {
-                const loaded = loadFromLocalStorage();
+                updateVisitorCounter();
+                const loaded = loadData();
                 if (!loaded) {
+                    currentLevel = '2';
                     currentStream = 'sciences_experimentales';
-                    streamSelect.value = currentStream;
                     currentSemester = 1;
                     currentLang = 'ar';
                     grades = {};
+                    levelSelect.value = currentLevel;
+                    updateStreamOptions();
+                    streamSelect.value = currentStream;
                 }
                 updateLangButtons();
                 updateAllTranslations();
+                updateStreamOptions();
+                streamSelect.value = currentStream;
                 updateSemesterTabUI();
-                renderSubjects();
+                renderSubjectsTable();
                 updateAllAverages();
+                updateOrientationVisibility();
+                updateTicker();
                 document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+                document.getElementById('orientationResult').style.display = 'none';
             }
-
             init();
-            console.log('🧮 Algerian Secondary School Calculator V2 Ready!');
-            console.log('   👨‍🏫 Developed by Prof. Khalil Zouhair - Master in Mathematics & CS');
-            console.log('   🇩🇿 الجزائر · تقويم مستمر + اختبار · بدون تثمين المشاريع');
-            console.log('   🌐 5G-ready educational community tool');
+            console.log('🧮 حاسبة المعدلات - الأستاذ خليل زهير | ماستر رياضيات وإعلام آلي | 5G Ready 🌐');
         })();
     </script>
 </body>
