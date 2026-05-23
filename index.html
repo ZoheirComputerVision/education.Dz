@@ -1,331 +1,394 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-<meta http-equiv=Content-Type content="text/html; charset=utf-8">
-<meta name=Generator content="Microsoft Word 15 (filtered)">
-<style>
-<!--
- /* Font Definitions */
- @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:"Noto Sans SC";
-	panose-1:0 0 0 0 0 0 0 0 0 0;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0in;
-	margin-right:0in;
-	margin-bottom:10.0pt;
-	margin-left:0in;
-	line-height:115%;
-	font-size:11.0pt;
-	font-family:"Noto Sans SC",serif;}
-.MsoChpDefault
-	{font-family:"Noto Sans SC",serif;}
-.MsoPapDefault
-	{margin-bottom:10.0pt;
-	line-height:115%;}
-@page WordSection1
-	{size:595.35pt 841.95pt;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
--->
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 حاسبة المعدلات - الطور الثانوي الجزائري</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Cairo', 'Noto Sans Arabic', sans-serif; }
+        
+        :root {
+            --dz-green: #006233;
+            --dz-red: #D21034;
+            --dz-white: #FFFFFF;
+            --dz-cream: #F5F5DC;
+        }
 
+        body {
+            background: linear-gradient(135deg, #006233 0%, #004d28 50%, #D21034 100%);
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0, 98, 51, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .dz-gradient {
+            background: linear-gradient(135deg, #006233, #D21034);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .star-decoration::before {
+            content: '⭐';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 24px;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-anim { animation: float 3s ease-in-out infinite; }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(0, 98, 51, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(0, 98, 51, 0.8), 0 0 50px rgba(210, 16, 52, 0.4); }
+        }
+
+        .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+        .input-dz {
+            border: 2px solid #006233;
+            transition: all 0.3s ease;
+        }
+        .input-dz:focus {
+            border-color: #D21034;
+            box-shadow: 0 0 15px rgba(210, 16, 52, 0.3);
+            outline: none;
+            transform: scale(1.02);
+        }
+
+        .btn-dz {
+            background: linear-gradient(135deg, #006233, #004d28);
+            transition: all 0.3s ease;
+        }
+        .btn-dz:hover {
+            background: linear-gradient(135deg, #D21034, #b80d2e);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(210, 16, 52, 0.4);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #006233, #004d28);
+            color: white;
+        }
+
+        .pass { background: linear-gradient(135deg, #006233, #28a745) !important; }
+        .fail { background: linear-gradient(135deg, #D21034, #dc3545) !important; }
+
+        .subject-chip {
+            background: rgba(0, 98, 51, 0.1);
+            border: 1px solid rgba(0, 98, 51, 0.3);
+            transition: all 0.3s;
+        }
+        .subject-chip:hover {
+            background: rgba(0, 98, 51, 0.2);
+            transform: scale(1.05);
+        }
+
+        .lang-btn {
+            transition: all 0.3s ease;
+        }
+        .lang-btn.active {
+            background: #006233;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .islamic-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23006233' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .crescent {
+            font-size: 40px;
+            filter: drop-shadow(0 0 10px rgba(0, 98, 51, 0.5));
+        }
+
+        .scientist-icons {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card { margin: 10px; padding: 20px !important; }
+        }
+
+        .score-bar {
+            height: 12px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.3);
+            overflow: hidden;
+        }
+        .score-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 1s ease;
+        }
+    </style>
 </head>
+<body class="islamic-pattern">
 
-<body lang=EN-US link="#0563C1" vlink="#954F72" style='word-wrap:break-word'>
+    <!-- Decorative Scientific Icons -->
+    <div class="scientist-icons" style="top:10%;left:5%">🔬</div>
+    <div class="scientist-icons" style="top:30%;right:8%">🧪</div>
+    <div class="scientist-icons" style="top:60%;left:3%">📐</div>
+    <div class="scientist-icons" style="top:80%;right:5%">🧬</div>
+    <div class="scientist-icons" style="top:15%;right:30%">&</div>
+    <div class="scientist-icons" style="top:70%;left:15%">📊</div>
 
-<div class=WordSection1>
+    <div class="relative z-10 min-h-screen py-6 px-4">
+        
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <div class="crescent float-anim inline-block mb-2">🌙</div>
+            <h1 class="text-4xl md:text-5xl font-black text-white mb-2 drop-shadow-lg">
+                🇩🇿 حاسبة المعدلات
+            </h1>
+            <p class="text-white/80 text-lg" id="subtitle">الطور الثانوي الجزائري</p>
+            <div class="flex justify-center gap-2 mt-3">
+                <span class="text-2xl">🔬</span>
+                <span class="text-2xl">🧪</span>
+                <span class="text-2xl">📐</span>
+                <span class="text-2xl">&</span>
+                <span class="text-2xl">🧬</span>
+            </div>
+        </div>
 
-<p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
-12.0pt;margin-left:6.0pt'><span style='color:black'>const { useState, useEffect
-} = React;</span><br>
-<br>
-<span style='color:black'>const TRANSLATIONS = {</span><br>
-<span style='color:black'>  ar: { lang: &quot;العربية&quot;, title: &quot;حساب المعدلات&quot;,
-grade2: &quot;السنة الثانية&quot;, grade3: &quot;السنة الثالثة&quot;, gradeT:
-&quot;السنة النهائية&quot;, science: &quot;العلوم&quot;, math: &quot;الرياضيات&quot;,
-tech: &quot;العلوم التقنية&quot;, literature: &quot;الأدب والفلسفة&quot;,
-foreign: &quot;اللغات الأجنبية&quot;, semesterAvg: &quot;معدل الفصل&quot;,
-generalAvg: &quot;المعدل العام&quot;, reset: &quot;إعادة تعيين&quot;,
-excellent: &quot;ممتاز&quot;, good: &quot;جيد جداً&quot;, pass: &quot;مقبول&quot;,
-fail: &quot;راسب&quot;, inputScore: &quot;أدخل الدرجة&quot;, subjects: &quot;المواد&quot;
-},</span><br>
-<span style='color:black'>  en: { lang: &quot;English&quot;, title: &quot;Grade
-Calculator&quot;, grade2: &quot;2nd Year&quot;, grade3: &quot;3rd Year&quot;,
-gradeT: &quot;Graduation Year&quot;, science: &quot;Sciences&quot;, math:
-&quot;Mathematics&quot;, tech: &quot;Technical Sciences&quot;, literature:
-&quot;Literature &amp; Philosophy&quot;, foreign: &quot;Foreign Languages&quot;,
-semesterAvg: &quot;Semester Average&quot;, generalAvg: &quot;General
-Average&quot;, reset: &quot;Reset&quot;, excellent: &quot;Excellent&quot;,
-good: &quot;Very Good&quot;, pass: &quot;Pass&quot;, fail: &quot;Fail&quot;,
-inputScore: &quot;Enter Score&quot;, subjects: &quot;Subjects&quot; },</span><br>
-<span style='color:black'>  fr: { lang: &quot;Français&quot;, title:
-&quot;Calculateur de Notes&quot;, grade2: &quot;2ème Année&quot;, grade3:
-&quot;1ère Année&quot;, gradeT: &quot;Année Terminale&quot;, science:
-&quot;Sciences&quot;, math: &quot;Mathématiques&quot;, tech: &quot;Sciences
-Techniques&quot;, literature: &quot;Lettres &amp; Philosophie&quot;, foreign:
-&quot;Langues Étrangères&quot;, semesterAvg: &quot;Moyenne Semestre&quot;,
-generalAvg: &quot;Moyenne Générale&quot;, reset: &quot;Réinitialiser&quot;,
-excellent: &quot;Excellent&quot;, good: &quot;Très Bien&quot;, pass:
-&quot;Passable&quot;, fail: &quot;Insuffisant&quot;, inputScore: &quot;Entrez
-la note&quot;, subjects: &quot;Matières&quot; },</span><br>
-<span style='color:black'>  zh: { lang: &quot;中文&quot;, title: &quot;成绩计算器&quot;,
-grade2: &quot;二年级&quot;, grade3: &quot;三年级&quot;, gradeT: &quot;毕业班&quot;,
-science: &quot;理科&quot;, math: &quot;数学&quot;, tech: &quot;技术科学&quot;,
-literature: &quot;文学与哲学&quot;, foreign: &quot;外语&quot;, semesterAvg: &quot;学期平均分&quot;,
-generalAvg: &quot;总平均分&quot;, reset: &quot;重置&quot;, excellent: &quot;优秀&quot;,
-good: &quot;良好&quot;, pass: &quot;及格&quot;, fail: &quot;不及格&quot;, inputScore:
-&quot;输入分数&quot;, subjects: &quot;科目&quot; }</span><br>
-<span style='color:black'>};</span><br>
-<br>
-<span style='color:black'>const SUBJECTS = {</span><br>
-<span style='color:black'>  sciences: [&quot;الرياضيات/Mathématiques&quot;,
-&quot;الفيزياء/Physique&quot;, &quot;العلوم الطبيعية/SVT&quot;, &quot;الكيمياء/Chimie&quot;,
-&quot;العربية/Arabe&quot;, &quot;الفرنسية/Français&quot;, &quot;الإنجليزية/Anglais&quot;],</span><br>
-<span style='color:black'>  mathematiques: [&quot;الرياضيات/Mathématiques&quot;,
-&quot;الفيزياء/Physique&quot;, &quot;العلوم الطبيعية/SVT&quot;, &quot;العربية/Arabe&quot;,
-&quot;الفرنسية/Français&quot;, &quot;الإنجليزية/Anglais&quot;, &quot;التاريخ والجغرافيا/Histoire-Géo&quot;],</span><br>
-<span style='color:black'>  tech: [&quot;الرياضيات/Mathématiques&quot;, &quot;الفيزياء/Physique&quot;,
-&quot;العلوم الصناعية/Sciences Industrielles&quot;, &quot;العربية/Arabe&quot;,
-&quot;الفرنسية/Français&quot;, &quot;الإنجليزية/Anglais&quot;],</span><br>
-<span style='color:black'>  literature: [&quot;العربية/Arabe&quot;, &quot;الفرنسية/Français&quot;,
-&quot;الإنجليزية/Anglais&quot;, &quot;التاريخ والجغرافيا/Histoire-Géo&quot;,
-&quot;الفلسفة/Philosophie&quot;, &quot;التربية الإسلامية/Education
-Islamique&quot;],</span><br>
-<span style='color:black'>  foreign: [&quot;العربية/Arabe&quot;, &quot;الفرنسية/Français&quot;,
-&quot;الإنجليزية/Anglais&quot;, &quot;اللغة الثانية/2ème Langue&quot;, &quot;التاريخ
-والجغرافيا/Histoire-Géo&quot;, &quot;التربية الإسلامية/Education
-Islamique&quot;]</span><br>
-<span style='color:black'>};</span><br>
-<br>
-<span style='color:black'>const GRADES = [</span><br>
-<span style='color:black'>  { min: 16, label: &quot;excellent&quot;, color:
-&quot;text-green-600&quot; },</span><br>
-<span style='color:black'>  { min: 14, label: &quot;good&quot;, color:
-&quot;text-blue-600&quot; },</span><br>
-<span style='color:black'>  { min: 10, label: &quot;pass&quot;, color:
-&quot;text-yellow-600&quot; },</span><br>
-<span style='color:black'>  { min: 0, label: &quot;fail&quot;, color:
-&quot;text-red-600&quot; }</span><br>
-<span style='color:black'>];</span><br>
-<br>
-<span style='color:black'>export default function App() {</span><br>
-<span style='color:black'>  const [lang, setLang] = useState(&quot;fr&quot;);</span><br>
-<span style='color:black'>  const [grade, setGrade] =
-useState(&quot;1ère&quot;);</span><br>
-<span style='color:black'>  const [specialty, setSpecialty] =
-useState(&quot;sciences&quot;);</span><br>
-<span style='color:black'>  const [scores, setScores] = useState({});</span><br>
-<span style='color:black'>  const t = TRANSLATIONS[lang];</span><br>
-<br>
-<span style='color:black'>  useEffect(() =&gt; {</span><br>
-<span style='color:black'>    const newScores = {};</span><br>
-<span style='color:black'>    SUBJECTS[specialty].forEach(s =&gt; {
-newScores[s] = &quot;&quot;; });</span><br>
-<span style='color:black'>    setScores(newScores);</span><br>
-<span style='color:black'>  }, [specialty]);</span><br>
-<br>
-<span style='color:black'>  const handleScoreChange = (subject, value) =&gt; {</span><br>
-<span style='color:black'>    setScores(prev =&gt; ({ ...prev, [subject]: value
-}));</span><br>
-<span style='color:black'>  };</span><br>
-<br>
-<span style='color:black'>  const calcAverage = (scoreList) =&gt; {</span><br>
-<span style='color:black'>    const valid = scoreList.filter(s =&gt; s !==
-&quot;&quot; &amp;&amp; !isNaN(Number(s)));</span><br>
-<span style='color:black'>    if (valid.length === 0) return 0;</span><br>
-<span style='color:black'>    return valid.reduce((a, b) =&gt; a + Number(b),
-0) / valid.length;</span><br>
-<span style='color:black'>  };</span><br>
-<br>
-<span style='color:black'>  const semesterAvg =
-calcAverage(Object.values(scores));</span><br>
-<span style='color:black'>  const generalAvg = semesterAvg;</span><br>
-<br>
-<span style='color:black'>  const getGradeLabel = (avg) =&gt; {</span><br>
-<span style='color:black'>    for (const g of GRADES) {</span><br>
-<span style='color:black'>      if (avg &gt;= g.min) return { label:
-t[g.label], color: g.color };</span><br>
-<span style='color:black'>    }</span><br>
-<span style='color:black'>    return { label: t.fail, color:
-&quot;text-red-600&quot; };</span><br>
-<span style='color:black'>  };</span><br>
-<br>
-<span style='color:black'>  const reset = () =&gt; {</span><br>
-<span style='color:black'>    const newScores = {};</span><br>
-<span style='color:black'>    SUBJECTS[specialty].forEach(s =&gt; {
-newScores[s] = &quot;&quot;; });</span><br>
-<span style='color:black'>    setScores(newScores);</span><br>
-<span style='color:black'>  };</span><br>
-<br>
-<span style='color:black'>  return (</span><br>
-<span style='color:black'>    &lt;div className=&quot;min-h-screen bg-gradient-to-br
-from-green-50 via-white to-red-50 p-4&quot;&gt;</span><br>
-<span style='color:black'>      {/* Header */}</span><br>
-<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto
-mb-6&quot;&gt;</span><br>
-<span style='color:black'>        &lt;div className=&quot;bg-gradient-to-r
-from-green-700 via-white to-red-600 rounded-2xl p-6 shadow-2xl&quot;&gt;</span><br>
-<span style='color:black'>          &lt;div className=&quot;flex justify-between
-items-center mb-4&quot;&gt;</span><br>
-<span style='color:black'>            &lt;h1 className=&quot;text-3xl font-bold
-text-white&quot;&gt;{t.title} &#127891;&lt;/h1&gt;</span><br>
-<span style='color:black'>            &lt;div className=&quot;flex
-gap-2&quot;&gt;</span><br>
-<span style='color:black'>              {Object.keys(TRANSLATIONS).map(l =&gt;
-(</span><br>
-<span style='color:black'>                &lt;button key={l} onClick={() =&gt;
-setLang(l)}</span><br>
-<span style='color:black'>                  className={`px-3 py-1 rounded-full
-text-sm font-semibold transition-all ${lang === l ? &quot;bg-white
-text-green-700&quot; : &quot;bg-white/30 text-white
-hover:bg-white/50&quot;}`}&gt;</span><br>
-<span style='color:black'>                  {TRANSLATIONS[l].lang}</span><br>
-<span style='color:black'>                &lt;/button&gt;</span><br>
-<span style='color:black'>              ))}</span><br>
-<span style='color:black'>            &lt;/div&gt;</span><br>
-<span style='color:black'>          &lt;/div&gt;</span><br>
-<span style='color:black'>          &lt;div className=&quot;flex flex-wrap
-gap-3 text-white&quot;&gt;</span><br>
-<span style='color:black'>            &lt;div
-className=&quot;text-2xl&quot;&gt;∑ Δ π √ ∞&lt;/div&gt;</span><br>
-<span style='color:black'>          &lt;/div&gt;</span><br>
-<span style='color:black'>        &lt;/div&gt;</span><br>
-<span style='color:black'>      &lt;/div&gt;</span><br>
-<br>
-<span style='color:black'>      {/* Controls */}</span><br>
-<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto mb-6
-grid grid-cols-1 md:grid-cols-3 gap-4&quot;&gt;</span><br>
-<span style='color:black'>        &lt;div className=&quot;bg-white rounded-xl
-p-4 shadow-lg border-l-4 border-green-600&quot;&gt;</span><br>
-<span style='color:black'>          &lt;label className=&quot;block text-sm
-font-semibold text-gray-700 mb-2&quot;&gt;{t.grade2} / {t.grade3} / {t.gradeT}&lt;/label&gt;</span><br>
-<span style='color:black'>          &lt;select value={grade} onChange={e =&gt;
-setGrade(e.target.value)}</span><br>
-<span style='color:black'>            className=&quot;w-full p-2 border-2
-border-green-200 rounded-lg focus:border-green-500 outline-none&quot;&gt;</span><br>
-<span style='color:black'>            &lt;option
-value=&quot;2ème&quot;&gt;{t.grade2}&lt;/option&gt;</span><br>
-<span style='color:black'>            &lt;option
-value=&quot;1ère&quot;&gt;{t.grade3}&lt;/option&gt;</span><br>
-<span style='color:black'>            &lt;option
-value=&quot;Terminale&quot;&gt;{t.gradeT}&lt;/option&gt;</span><br>
-<span style='color:black'>          &lt;/select&gt;</span><br>
-<span style='color:black'>        &lt;/div&gt;</span><br>
-<span style='color:black'>        &lt;div className=&quot;bg-white rounded-xl
-p-4 shadow-lg border-l-4 border-red-500&quot;&gt;</span><br>
-<span style='color:black'>          &lt;label className=&quot;block text-sm
-font-semibold text-gray-700 mb-2&quot;&gt;{t.subjects}&lt;/label&gt;</span><br>
-<span style='color:black'>          &lt;select value={specialty} onChange={e
-=&gt; setSpecialty(e.target.value)}</span><br>
-<span style='color:black'>            className=&quot;w-full p-2 border-2
-border-red-200 rounded-lg focus:border-red-500 outline-none&quot;&gt;</span><br>
-<span style='color:black'>            &lt;option
-value=&quot;sciences&quot;&gt;{t.science}&lt;/option&gt;</span><br>
-<span style='color:black'>            &lt;option
-value=&quot;mathematiques&quot;&gt;{t.math}&lt;/option&gt;</span><br>
-<span style='color:black'>            &lt;option
-value=&quot;tech&quot;&gt;{t.tech}&lt;/option&gt;</span><br>
-<span style='color:black'>            &lt;option
-value=&quot;literature&quot;&gt;{t.literature}&lt;/option&gt;</span><br>
-<span style='color:black'>            &lt;option
-value=&quot;foreign&quot;&gt;{t.foreign}&lt;/option&gt;</span><br>
-<span style='color:black'>          &lt;/select&gt;</span><br>
-<span style='color:black'>        &lt;/div&gt;</span><br>
-<span style='color:black'>        &lt;div className=&quot;bg-white rounded-xl
-p-4 shadow-lg border-l-4 border-green-600 flex items-center&quot;&gt;</span><br>
-<span style='color:black'>          &lt;button onClick={reset}</span><br>
-<span style='color:black'>            className=&quot;w-full bg-gradient-to-r
-from-green-600 to-red-500 text-white py-2 rounded-lg font-semibold
-hover:opacity-90 transition-opacity&quot;&gt;</span><br>
-<span style='color:black'>            &#128260; {t.reset}</span><br>
-<span style='color:black'>          &lt;/button&gt;</span><br>
-<span style='color:black'>        &lt;/div&gt;</span><br>
-<span style='color:black'>      &lt;/div&gt;</span><br>
-<br>
-<span style='color:black'>      {/* Scores */}</span><br>
-<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto
-mb-6&quot;&gt;</span><br>
-<span style='color:black'>        &lt;div className=&quot;bg-white rounded-2xl
-p-6 shadow-xl&quot;&gt;</span><br>
-<span style='color:black'>          &lt;h2 className=&quot;text-xl font-bold
-text-gray-800 mb-4&quot;&gt;&#128221; {t.inputScore} (0-20)&lt;/h2&gt;</span><br>
-<span style='color:black'>          &lt;div className=&quot;grid grid-cols-1
-sm:grid-cols-2 lg:grid-cols-3 gap-4&quot;&gt;</span><br>
-<span style='color:black'>            {SUBJECTS[specialty].map(subject =&gt; (</span><br>
-<span style='color:black'>              &lt;div key={subject}
-className=&quot;bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-xl
-border border-gray-200 hover:shadow-md transition-shadow&quot;&gt;</span><br>
-<span style='color:black'>                &lt;label className=&quot;block
-text-sm font-semibold text-gray-700 mb-2&quot;&gt;{subject}&lt;/label&gt;</span><br>
-<span style='color:black'>                &lt;input type=&quot;number&quot;
-min=&quot;0&quot; max=&quot;20&quot; step=&quot;0.5&quot;</span><br>
-<span style='color:black'>                  value={scores[subject] ||
-&quot;&quot;}</span><br>
-<span style='color:black'>                  onChange={e =&gt;
-handleScoreChange(subject, e.target.value)}</span><br>
-<span style='color:black'>                  className=&quot;w-full p-2 border-2
-border-gray-300 rounded-lg focus:border-green-500 outline-none text-center
-text-lg font-semibold&quot;</span><br>
-<span style='color:black'>                  placeholder=&quot;0-20&quot; /&gt;</span><br>
-<span style='color:black'>              &lt;/div&gt;</span><br>
-<span style='color:black'>            ))}</span><br>
-<span style='color:black'>          &lt;/div&gt;</span><br>
-<span style='color:black'>        &lt;/div&gt;</span><br>
-<span style='color:black'>      &lt;/div&gt;</span><br>
-<br>
-<span style='color:black'>      {/* Results */}</span><br>
-<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto mb-6
-grid grid-cols-1 md:grid-cols-2 gap-4&quot;&gt;</span><br>
-<span style='color:black'>        &lt;div className=&quot;bg-gradient-to-br
-from-green-600 to-green-800 text-white rounded-2xl p-6 shadow-xl&quot;&gt;</span><br>
-<span style='color:black'>          &lt;div className=&quot;text-4xl
-mb-2&quot;&gt;&#128202;&lt;/div&gt;</span><br>
-<span style='color:black'>          &lt;h3 className=&quot;text-xl font-bold
-mb-2&quot;&gt;{t.semesterAvg}&lt;/h3&gt;</span><br>
-<span style='color:black'>          &lt;div className=&quot;text-5xl font-bold
-mb-2&quot;&gt;{semesterAvg.toFixed(2)}&lt;/div&gt;</span><br>
-<span style='color:black'>          &lt;div className={`text-lg font-semibold
-${getGradeLabel(semesterAvg).color}`}&gt;</span><br>
-<span style='color:black'>            {getGradeLabel(semesterAvg).label}</span><br>
-<span style='color:black'>          &lt;/div&gt;</span><br>
-<span style='color:black'>        &lt;/div&gt;</span><br>
-<span style='color:black'>        &lt;div className=&quot;bg-gradient-to-br
-from-red-500 to-red-700 text-white rounded-2xl p-6 shadow-xl&quot;&gt;</span><br>
-<span style='color:black'>          &lt;div className=&quot;text-4xl
-mb-2&quot;&gt;&#127942;&lt;/div&gt;</span><br>
-<span style='color:black'>          &lt;h3 className=&quot;text-xl font-bold
-mb-2&quot;&gt;{t.generalAvg}&lt;/h3&gt;</span><br>
-<span style='color:black'>          &lt;div className=&quot;text-5xl font-bold
-mb-2&quot;&gt;{generalAvg.toFixed(2)}&lt;/div&gt;</span><br>
-<span style='color:black'>          &lt;div className={`text-lg font-semibold
-${getGradeLabel(generalAvg).color}`}&gt;</span><br>
-<span style='color:black'>            {getGradeLabel(generalAvg).label}</span><br>
-<span style='color:black'>          &lt;/div&gt;</span><br>
-<span style='color:black'>        &lt;/div&gt;</span><br>
-<span style='color:black'>      &lt;/div&gt;</span><br>
-<br>
-<span style='color:black'>      {/* Footer */}</span><br>
-<span style='color:black'>      &lt;div className=&quot;max-w-4xl mx-auto
-text-center text-gray-500 text-sm pb-4&quot;&gt;</span><br>
-<span style='color:black'>        Algérie &#127465;&#127487; • {new
-Date().getFullYear()}</span><br>
-<span style='color:black'>      &lt;/div&gt;</span><br>
-<span style='color:black'>    &lt;/div&gt;</span><br>
-<span style='color:black'>  );</span><br>
-<span style='color:black'>}</span><br>
-<br>
-</p>
+        <!-- Language Switcher -->
+        <div class="flex justify-center gap-2 mb-6 flex-wrap">
+            <button onclick="setLang('ar')" class="lang-btn active px-4 py-2 rounded-full bg-white/20 text-white font-bold text-sm" id="lang-ar">
+                🇸🇦 العربية
+            </button>
+            <button onclick="setLang('en')" class="lang-btn px-4 py-2 rounded-full bg-white/20 text-white font-bold text-sm" id="lang-en">
+                🇬🇧 English
+            </button>
+            <button onclick="setLang('fr')" class="lang-btn px-4 py-2 rounded-full bg-white/20 text-white font-bold text-sm" id="lang-fr">
+                🇫🇷 Français
+            </button>
+            <button onclick="setLang('zh')" class="lang-btn px-4 py-2 rounded-full bg-white/20 text-white font-bold text-sm" id="lang-zh">
+                🇨🇳 中文
+            </button>
+        </div>
 
-<p class=MsoNormal style='margin-top:13.45pt;margin-right:0in;margin-bottom:
-13.45pt;margin-left:6.0pt'><span style='color:black'>【以上内容由文心人工智能生成】</span></p>
+        <!-- Main Card -->
+        <div class="glass-card rounded-3xl p-6 md:p-8 max-w-4xl mx-auto">
 
-</div>
+            <!-- Section Selector -->
+            <div class="mb-6">
+                <label class="block text-lg font-bold text-[#006233] mb-3" id="label-section">
+                    📚 اختر الشعبة
+                </label>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="sections-grid">
+                    <button onclick="selectSection('sciences')" class="section-btn subject-chip rounded-xl p-3 text-center font-bold text-[#006233]" data-section="sciences">
+                        🔬 علوم تجريبية
+                    </button>
+                    <button onclick="selectSection('math')" class="section-btn subject-chip rounded-xl p-3 text-center font-bold text-[#006233]" data-section="math">
+                        📐 رياضيات
+                    </button>
+                    <button onclick="selectSection('eco')" class="section-btn subject-chip rounded-xl p-3 text-center font-bold text-[#006233]" data-section="eco">
+                        📊 تسيير واقتصاد
+                    </button>
+                    <button onclick="selectSection('letters')" class="section-btn subject-chip rounded-xl p-3 text-center font-bold text-[#006233]" data-section="letters">
+                        📖 آداب وفلسفة
+                    </button>
+                    <button onclick="selectSection('tech')" class="section-btn subject-chip rounded-xl p-3 text-center font-bold text-[#006233]" data-section="tech">
+                        🔧 تقني رياضي
+                    </button>
+                    <button onclick="selectSection('lang')" class="section-btn subject-chip rounded-xl p-3 text-center font-bold text-[#006233]" data-section="lang">
+                        🌍 لغات أجنبية
+                    </button>
+                </div>
+            </div>
 
-</body>
+            <!-- Student Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div>
+                    <label class="block text-sm font-bold text-[#006233] mb-1" id="label-name">👤 اسم التلميذ(ة)</label>
+                    <input type="text" id="studentName" class="input-dz w-full p-3 rounded-xl text-center font-bold" placeholder="أدخل الاسم الكامل">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-[#006233] mb-1" id="label-class">🏫 القسم</label>
+                    <select id="studentClass" class="input-dz w-full p-3 rounded-xl text-center font-bold">
+                        <option value="">اختر القسم</option>
+                        <option value="1as">1AS - علوم تجريبية</option>
+                        <option value="2as">2AS - علوم تجريبية</option>
+                        <option value="3as">3AS - علوم تجريبية</option>
+                        <option value="1mc">1MC - رياضيات</option>
+                        <option value="2mc">2MC - رياضيات</option>
+                        <option value="3mc">3MC - رياضيات</option>
+                        <option value="1lg">1LG - آداب</option>
+                        <option value="2lg">2LG - آداب</option>
+                        <option value="3lg">3LG - آداب</option>
+                    </select>
+                </div>
+            </div>
 
-</html>
+            <!-- Semester 1 -->
+            <div class="mb-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-3 h-3 rounded-full bg-[#006233] pulse-glow"></div>
+                    <h2 class="text-xl font-black text-[#006233]" id="sem1-title">الفصل الدراسي الأول</h2>
+                    <span class="bg-[#006233] text-white text-xs px-3 py-1 rounded-full" id="sem1-badge">S1</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3" id="sem1-subjects">
+                    <!-- Dynamic subjects will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Semester 2 -->
+            <div class="mb-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-3 h-3 rounded-full bg-[#D21034] pulse-glow"></div>
+                    <h2 class="text-xl font-black text-[#D21034]" id="sem2-title">الفصل الدراسي الثاني</h2>
+                    <span class="bg-[#D21034] text-white text-xs px-3 py-1 rounded-full" id="sem2-badge">S2</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3" id="sem2-subjects">
+                    <!-- Dynamic subjects will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Calculate Button -->
+            <button onclick="calculate()" class="btn-dz w-full py-4 rounded-2xl text-white text-xl font-black mb-6 pulse-glow">
+                🚀 احسب المعدلات الآن
+            </button>
+
+            <!-- Results -->
+            <div id="results" class="hidden">
+                <div class="border-t-4 border-[#006233] pt-6">
+                    <h2 class="text-2xl font-black text-center dz-gradient mb-6" id="results-title">📊 النتائج</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <!-- Semester 1 Result -->
+                        <div class="result-card rounded-2xl p-5 text-center" id="res-sem1">
+                            <div class="text-3xl mb-2">📗</div>
+                            <div class="text-sm opacity-80" id="res-sem1-label">الفصل الأول</div>
+                            <div class="text-4xl font-black my-2" id="res-sem1-score">00.00</div>
+                            <div class="text-sm" id="res-sem1-status">جاري الحساب...</div>
+                            <div class="score-bar mt-3">
+                                <div class="score-fill bg-white/40" id="res-sem1-bar" style="width:0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Semester 2 Result -->
+                        <div class="result-card rounded-2xl p-5 text-center" id="res-sem2">
+                            <div class="text-3xl mb-2">📘</div>
+                            <div class="text-sm opacity-80" id="res-sem2-label">الفصل الثاني</div>
+                            <div class="text-4xl font-black my-2" id="res-sem2-score">00.00</div>
+                            <div class="text-sm" id="res-sem2-status">جاري الحساب...</div>
+                            <div class="score-bar mt-3">
+                                <div class="score-fill bg-white/40" id="res-sem2-bar" style="width:0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- General Result -->
+                        <div class="rounded-2xl p-5 text-center bg-gradient-to-br from-[#D21034] to-[#b80d2e] text-white" id="res-general">
+                            <div class="text-3xl mb-2">🏆</div>
+                            <div class="text-sm opacity-80" id="res-gen-label">المعدل العام</div>
+                            <div class="text-4xl font-black my-2" id="res-gen-score">00.00</div>
+                            <div class="text-sm" id="res-gen-status">جاري الحساب...</div>
+                            <div class="score-bar mt-3">
+                                <div class="score-fill bg-white/40" id="res-gen-bar" style="width:0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student Summary -->
+                    <div class="bg-gradient-to-r from-[#006233]/10 to-[#D21034]/10 rounded-2xl p-5 text-center border-2 border-[#006233]/20">
+                        <div class="text-lg font-bold text-[#006233]" id="summary-name">التلميذ(ة): ---</div>
+                        <div class="text-sm text-gray-600 mt-1" id="summary-class">القسم: ---</div>
+                        <div class="mt-3 text-3xl" id="summary-emoji">🎓</div>
+                        <div class="text-xl font-black mt-2" id="summary-text">---</div>
+                    </div>
+
+                    <!-- Print Button -->
+                    <button onclick="window.print()" class="w-full mt-4 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition">
+                        🖨️ طباعة النتائج
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-6 text-white/60 text-sm">
+            <p>🇩🇿 صُنع بحب لأبناء الجزائر 🇩🇿</p>
+            <p class="mt-1">🌙 بسم الله الرحمن الرحيم 🌙</p>
+        </div>
+    </div>
+
+    <script>
+        // ==================== TRANSLATIONS ====================
+        const translations = {
+            ar: {
+                subtitle: "الطور الثانوي الجزائري",
+                label_section: "📚 اختر الشعبة",
+                label_name: "👤 اسم التلميذ(ة)",
+                label_class: "🏫 القسم",
+                sem1_title: "الفصل الدراسي الأول",
+                sem1_badge: "S1",
+                sem2_title: "الفصل الدراسي الثاني",
+                sem2_badge: "S2",
+                results_title: "📊 النتائج",
+                res_sem1_label: "الفصل الأول",
+                res_sem2_label: "الفصل الثاني",
+                res_gen_label: "المعدل العام",
+                summary_name: "التلميذ(ة):",
+                summary_class: "القسم:",
+                summary_text_pass: "🎉 ممتاز! نتيجة مشرفة، استمر!",
+                summary_text_good: "👏 جيد جداً! أنت في الطريق الصحيح",
+                summary_text_avg: "💪 جيد، يمكنك التحسن أكثر!",
+                summary_text_fail: "📚 تحتاج مجهود أكبر، لا تستسلم!",
+                calc_btn: "🚀 احسب المعدلات الآن",
+                placeholder: "أدخل الاسم الكامل",
+                pass: "ناجح ✅",
+                fail: "راسب ❌",
+                sem1: "الفصل الأول",
+                sem2: "الفصل الثاني",
+                general: "المعدل العام"
+            },
+            en: {
+                subtitle: "Algerian Secondary School",
+                label_section: "📚 Choose Branch",
+                label_name: "👤 Student Name",
+                label_class: "🏫 Class",
+                sem1_title: "First Semester",
+                sem1_badge: "S1",
+                sem2_title: "Second Semester",
+                sem2_badge: "S2",
+                results_title: "📊 Results",
+                res_sem1_label: "Semester 1",
+                res_sem2_label: "Semester 2",
+                res_gen_label: "General Average",
+                summary_name: "Student:",
+                summary_class: "Class:",
+                summary_text_pass: "🎉 Excellent! Outstanding result, keep going!",
+                summary_text_good: "👏 Very good! You're on the right track",
+                summary_text_avg: "💪 Good, you can improve more!",
+                summary_text_fail: "📚 Need more effort, don't give up!",
+                calc_btn: "🚀 Calculate Averages Now",
+                placeholder: "Enter full name",
+                pass: "Pass ✅",
+                fail: "Fail ❌",
+                sem1: "Semester 1",
+                sem2: "Semester 2",
+                general: "General Average"
+            },
+            fr: {
+                subtitle: "Enseignement Secondaire Algérien",
